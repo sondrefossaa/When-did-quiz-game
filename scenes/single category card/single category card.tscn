@@ -1,0 +1,664 @@
+[gd_scene load_steps=35 format=3 uid="uid://wpdbirqprwk5"]
+
+[ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://scenes/general/border timer texture.png" id="1_kseaw"]
+[ext_resource type="Script" uid="uid://i7xuqgkag2ci" path="res://scenes/single category card/single_category_card.gd" id="1_yq817"]
+[ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://questions/Question.png" id="4_15qw2"]
+[ext_resource type="Theme" uid="uid://crdxg5tftgbsp" path="res://scenes/general/card_general_theme.tres" id="5_gx74p"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/general/theme_manager.tscn" id="6_26idk"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/general/question_generator.tscn" id="6_yp3v6"]
+[ext_resource type="Script" uid="uid://1adkla0jegv6" path="res://scenes/general/num_input.gd" id="7_yp3v6"]
+[ext_resource type="Theme" uid="uid://c8g43ggknf01x" path="res://scenes/general/Calculator button theme.tres" id="8_15qw2"]
+
+[sub_resource type="Animation" id="Animation_lebyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Input viewer:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.693]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Input viewer/player answer text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bqwab"]
+resource_name = "show score"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Input viewer:anchor_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.693, 1.143]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Input viewer/player answer text:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_score"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%question timer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_th0jy"]
+_data = {
+&"RESET": SubResource("Animation_lebyw"),
+&"show score": SubResource("Animation_bqwab")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_q5obu"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yp3v6"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_15qw2"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(0.219608, 0.713726, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kseaw"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(1, 0.870588, 0.34902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gx74p"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(0.584314, 0.372549, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6gdn"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqwab"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(1, 0.223529, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lebyw"]
+font = SubResource("SystemFont_q5obu")
+font_size = 65
+font_color = Color(0, 0.74902, 0.388235, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_qm5my"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_26idk"]
+font = SubResource("SystemFont_qm5my")
+font_size = 60
+outline_color = Color(0.243137, 0.352941, 0.462745, 1)
+
+[sub_resource type="Theme" id="Theme_kseaw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp3v6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2sko"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15qw2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kseaw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx74p"]
+bg_color = Color(0.74401, 0.41598, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6gdn"]
+bg_color = Color(0.501247, 0.572053, 0.917127, 1)
+
+[sub_resource type="Theme" id="Theme_26idk"]
+default_font_size = 50
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.321569)
+LineEdit/colors/font_uneditable_color = Color(0, 0, 0, 1)
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_15qw2")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_kseaw")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_gx74p")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_g6gdn")
+
+[sub_resource type="GDScript" id="GDScript_kseaw"]
+script/source = "extends LineEdit
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lebyw"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th0jy"]
+bg_color = Color(0.302784, 0.708293, 1.92523e-07, 1)
+
+[sub_resource type="Theme" id="Theme_15qw2"]
+Button/colors/font_color = Color(0.678431, 0.678431, 0.678431, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 50
+Button/styles/normal = SubResource("StyleBoxFlat_lebyw")
+Button/styles/pressed = SubResource("StyleBoxFlat_th0jy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqwab"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Single category card" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2400.0
+script = ExtResource("1_yq817")
+metadata/_edit_vertical_guides_ = [732.0]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 73.0
+fill_mode = 4
+
+[node name="score anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../Card and ans/Card bg")
+libraries = {
+&"": SubResource("AnimationLibrary_th0jy")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_right = 731.0
+offset_bottom = 1027.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="timer border indicator" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1077.0
+offset_bottom = 681.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 102.0
+fill_mode = 5
+texture_progress = ExtResource("1_kseaw")
+
+[node name="question timer" type="Timer" parent="timer border indicator"]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
+
+[node name="category theme manager" parent="." node_paths=PackedStringArray("question_generator") instance=ExtResource("6_26idk")]
+unique_name_in_owner = true
+question_generator = NodePath("../question generator")
+
+[node name="question generator" parent="." instance=ExtResource("6_yp3v6")]
+unique_name_in_owner = true
+
+[node name="Card and ans" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.011
+anchor_right = 0.676
+anchor_bottom = 0.428
+offset_left = -11.88
+offset_right = -11.88
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_horizontal_guides_ = [247.0, 130.0, 247.0, 247.0, 132.0, 1033.0]
+
+[node name="Card bg" type="PanelContainer" parent="Card and ans"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_gx74p")
+metadata/_edit_vertical_guides_ = [730.0, 13.0]
+metadata/_edit_horizontal_guides_ = [1027.0, 1050.0]
+
+[node name="MarginContainer2" type="MarginContainer" parent="Card and ans/Card bg"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card and ans/Card bg/MarginContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "W"
+label_settings = SubResource("LabelSettings_yp3v6")
+
+[node name="Label2" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "h"
+label_settings = SubResource("LabelSettings_15qw2")
+
+[node name="Label3" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "e"
+label_settings = SubResource("LabelSettings_kseaw")
+
+[node name="Label4" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "n"
+label_settings = SubResource("LabelSettings_gx74p")
+
+[node name="Label5" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = " "
+label_settings = SubResource("LabelSettings_g6gdn")
+
+[node name="Label6" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "d"
+label_settings = SubResource("LabelSettings_bqwab")
+
+[node name="Label7" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "i"
+label_settings = SubResource("LabelSettings_lebyw")
+
+[node name="Label8" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "d"
+label_settings = SubResource("LabelSettings_g6gdn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Card and ans/Card bg"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Question text" type="Label" parent="Card and ans/Card bg/MarginContainer"]
+custom_minimum_size = Vector2(300, 115)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Alexander Flemming discover penicillin"
+label_settings = SubResource("LabelSettings_26idk")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Input viewer" type="MarginContainer" parent="Card and ans"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.291
+anchor_top = 0.693
+anchor_right = 0.709
+anchor_bottom = 1.143
+offset_left = 0.103759766
+offset_top = 0.3503418
+offset_right = -0.1038208
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 200
+
+[node name="player answer text" type="Label" parent="Card and ans/Input viewer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 115)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1200"
+label_settings = SubResource("LabelSettings_26idk")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="correct answer" type="MarginContainer" parent="Card and ans"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 857.2
+offset_right = 713.2
+offset_bottom = 1022.2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 50
+
+[node name="answer text" type="Label" parent="Card and ans/correct answer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 115)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1200"
+label_settings = SubResource("LabelSettings_26idk")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Question" type="Sprite2D" parent="Card and ans"]
+visible = false
+position = Vector2(359.12, 519)
+texture = ExtResource("4_15qw2")
+
+[node name="new answer timer" type="Timer" parent="Card and ans"]
+one_shot = true
+
+[node name="Category display" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 115)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_top = -260.0
+offset_right = 191.0
+offset_bottom = 46.0
+grow_horizontal = 2
+size_flags_vertical = 1
+text = "History"
+label_settings = SubResource("LabelSettings_26idk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Score" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0101852
+anchor_top = 0.432917
+anchor_right = 0.678
+anchor_bottom = 0.45
+offset_left = -11.0
+offset_top = -7.00085
+offset_right = -11.2401
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Score"]
+layout_mode = 2
+
+[node name="Score text" type="Label" parent="Score/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_kseaw")
+theme_override_font_sizes/font_size = 39
+text = "Score: "
+horizontal_alignment = 1
+
+[node name="Score value" type="Label" parent="Score/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 39
+text = "0"
+horizontal_alignment = 1
+
+[node name="Input field" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.54
+anchor_right = 0.677778
+anchor_bottom = 0.602083
+offset_top = -229.0
+offset_right = -12.0
+offset_bottom = -229.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yp3v6")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Input field"]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="Input field/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2sko")
+
+[node name="MarginContainer" type="MarginContainer" parent="Input field/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Input field/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnswerInput" type="LineEdit" parent="Input field/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_26idk")
+placeholder_text = "Answer"
+alignment = 1
+editable = false
+script = SubResource("GDScript_kseaw")
+
+[node name="BC onoff" type="Button" parent="Input field/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_15qw2")
+toggle_mode = true
+action_mode = 0
+text = "  BC  "
+
+[node name="num input" type="PanelContainer" parent="." node_paths=PackedStringArray("numpad")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 1105.0
+offset_right = -359.0
+offset_bottom = -553.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqwab")
+script = ExtResource("7_yp3v6")
+numpad = [NodePath("Number input/Row1/Button"), NodePath("Number input/Row1/Button2"), NodePath("Number input/Row1/Button3"), NodePath("Number input/Row2/Button"), NodePath("Number input/Row2/Button2"), NodePath("Number input/Row2/Button3"), NodePath("Number input/Row3/Button"), NodePath("Number input/Row3/Button2"), NodePath("Number input/Row3/Button3"), NodePath("Number input/Row4/Button3")]
+
+[node name="Number input" type="VBoxContainer" parent="num input"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="num input/Number input"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="num input/Number input/Row1" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "1"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="num input/Number input/Row1" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "2"
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="num input/Number input/Row1" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "3"
+icon_alignment = 1
+
+[node name="Row2" type="HBoxContainer" parent="num input/Number input"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="num input/Number input/Row2" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "4"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="num input/Number input/Row2" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "5"
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="num input/Number input/Row2" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "6"
+icon_alignment = 1
+
+[node name="Row3" type="HBoxContainer" parent="num input/Number input"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="num input/Number input/Row3" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "7"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="num input/Number input/Row3" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "8"
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="num input/Number input/Row3" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "9"
+icon_alignment = 1
+
+[node name="Row4" type="HBoxContainer" parent="num input/Number input"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="back button" type="Button" parent="num input/Number input/Row4" groups=["back"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "back"
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="num input/Number input/Row4" groups=["numpad"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "0"
+icon_alignment = 1
+
+[node name="confirm button" type="Button" parent="num input/Number input/Row4" groups=["confirm"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_15qw2")
+text = "confirm"
+icon_alignment = 1
+
+[connection signal="animation_finished" from="score anim" to="." method="_on_main_anim_animation_finished"]
+[connection signal="timeout" from="timer border indicator/question timer" to="." method="_on_question_timer_timeout"]
+[connection signal="question_created" from="question generator" to="." method="_on_question_generator_question_created"]

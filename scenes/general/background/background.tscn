@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbdm37u6b6a4k"]
+
+[ext_resource type="Script" uid="uid://mntx5nefdify" path="res://scenes/general/background/background.gd" id="1_n5ngf"]
+
+[node name="background" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_n5ngf")
+
+[node name="main bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1038.0
+offset_top = -508.0
+offset_right = -998.0
+offset_bottom = -468.0
+scale = Vector2(90.44527, 80.73902)
+
+[node name="floaters" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

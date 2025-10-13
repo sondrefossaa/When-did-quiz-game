@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="when did card game"
+run/main_scene="uid://cn8psqd4pyn2m"
+config/features=PackedStringArray("4.5", "Mobile")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=2400
+window/stretch/mode="viewport"
+window/handheld/orientation=1
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/custom="uid://dy1ycqsg2ht8s"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

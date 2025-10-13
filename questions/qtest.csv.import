@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ccuh552rcrtw1"
+
+[deps]
+
+files=["res://questions/qtest.Answer.translation", "res://questions/qtest.History Question.translation", "res://questions/qtest.Answer.translation", "res://questions/qtest.Pop Culture Question.translation", "res://questions/qtest.Answer.translation", "res://questions/qtest.Random Fun Fact Question.translation", "res://questions/qtest.Answer.translation", "res://questions/qtest.Sports And general Question.translation", "res://questions/qtest.Answer.translation"]
+
+source_file="res://questions/qtest.csv"
+dest_files=["res://questions/qtest.Answer.translation", "res://questions/qtest.History Question.translation", "res://questions/qtest.Answer.translation", "res://questions/qtest.Pop Culture Question.translation", "res://questions/qtest.Answer.translation", "res://questions/qtest.Random Fun Fact Question.translation", "res://questions/qtest.Answer.translation", "res://questions/qtest.Sports And general Question.translation", "res://questions/qtest.Answer.translation"]
+
+[params]
+
+compress=true
+delimiter=0

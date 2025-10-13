@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgyld47fl1rqh"]
+
+[ext_resource type="Script" uid="uid://d0qhqu5c0fxh3" path="res://scenes/general/category theme manager.gd" id="1_fihjq"]
+
+[node name="category theme manager" type="Node"]
+script = ExtResource("1_fihjq")
