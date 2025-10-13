@@ -25,7 +25,6 @@ window/handheld/orientation=1
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
-theme/custom="uid://dy1ycqsg2ht8s"
 
 [rendering]
 

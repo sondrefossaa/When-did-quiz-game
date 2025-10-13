@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cf6ahk3rd42su" path="res://scenes/card all category/multiple category card.gd" id="1_46u86"]
 [ext_resource type="Script" uid="uid://bmi0j0046pdag" path="res://scenes/card all category/show_answers.gd" id="2_im5jp"]
-[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://scenes/general/background/background.tscn" id="2_twxw3"]
-[ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://questions/Question.png" id="3_twxw3"]
+[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_twxw3"]
+[ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="3_twxw3"]
 [ext_resource type="Script" uid="uid://by0n24lqoatqf" path="res://scenes/card all category/answer_buttons.gd" id="4_tlj86"]
-[ext_resource type="Theme" uid="uid://cdhu03nh24i37" path="res://scenes/card all category/normal theme.tres" id="5_mj7rh"]
+[ext_resource type="Theme" uid="uid://cdhu03nh24i37" path="res://visual/themes/multiple category card/normal theme.tres" id="5_mj7rh"]
 [ext_resource type="Script" uid="uid://cyewhsek74mjb" path="res://scenes/card all category/button.gd" id="6_bvk0x"]
-[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/general/question_generator.tscn" id="7_lfjv7"]
-[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/general/theme_manager.tscn" id="8_im5jp"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="7_lfjv7"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="8_im5jp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wvsy"]
 bg_color = Color(1, 1, 1, 1)

@@ -5,11 +5,11 @@ signal new_question(correct)
 @onready var card = $"../../../.."
 @onready var new_answer_timer = $"../../../../new answer timer"
 @onready var card_outline = $"../../../../Panelcontainer"
-var normal_panel_style = preload("res://scenes/card all category/Card panel style.tres")
-var normal_theme = preload("res://scenes/card all category/normal theme.tres")
-var button_style = preload("res://scenes/card all category/button style.tres")
-const WRONG_THEME = preload("res://scenes/card all category/wrong theme.tres")
-const CORRECT_THEME = preload("res://scenes/card all category/correct theme.tres")
+var normal_panel_style = preload("res://visual/themes/multiple category card/Card panel style.tres")
+var normal_theme = preload("res://visual/themes/multiple category card/normal theme.tres")
+var button_style = preload("res://visual/themes/multiple category card/button style.tres")
+const WRONG_THEME = preload("res://visual/themes/multiple category card/wrong theme.tres")
+const CORRECT_THEME = preload("res://visual/themes/multiple category card/correct theme.tres")
 var question_color = {
 	"science" : "#38b6ff",
 	"history" : "#ffde59",
