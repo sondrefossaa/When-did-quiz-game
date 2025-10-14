@@ -1,7 +1,8 @@
 extends Node
 class_name questionGenerator
 
-signal question_created(category : String)
+# Moved to global
+#signal question_created(category : String)
 var csv_path = "res://questions/qtest.csv"
 
 # Load custom resource
@@ -15,7 +16,7 @@ var correct_answer : String
 var qestion_count := 131
 
 func create_question(category = "random"):
-	#TODO : Refactor whole system
+	# TODO : Refactor whole system
 	if category == "random":
 		category = categories.pick_random()
 	
@@ -27,5 +28,6 @@ func create_question(category = "random"):
 
 	# If single categoy card
 	correct_answer = data[row][col+1]
-	emit_signal("question_created", category)
+	#emit_signal("question_created", category)
+	Global.question_generated.emit(category)
 	return {"question": question, "answer": correct_answer}

@@ -1,9 +1,7 @@
 extends Node
-class_name Category_theme_manager
-@export var question_generator : Node
 
-
-signal theme_changed(category_name, new_color)
+# Moved to global
+#signal theme_changed(category_name, new_color)
 
 var card_general_theme = preload("res://visual/themes/single category card/card_general_theme.tres")
 var current_theme := "science"
@@ -18,13 +16,13 @@ var category_color = {
 
 
 func _ready():
-	question_generator.connect("question_created", change_theme)
+	Global.question_generated.connect(change_theme)
 	
 func change_theme(category):
-	
 	current_theme = category
 	current_color = category_color[category]
 	#card_bg.theme_type_variation = category
 	var stlbox = card_general_theme.get_stylebox("panel", "PanelContainer")
 	stlbox.bg_color = category_color[category]
-	theme_changed.emit(category, category_color[category])
+	#theme_changed.emit(category, category_color[category])
+	Global.theme_changed.emit(category, category_color[category])

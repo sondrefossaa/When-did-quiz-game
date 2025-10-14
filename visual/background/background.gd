@@ -1,6 +1,5 @@
 extends Node
 
-@export var category_theme_manager : Category_theme_manager = null
 @onready var main_bg = $"main bg"
 @onready var floaters = $floaters
 const BG_FLOATER = preload("uid://3tfn7w2ooy63")
@@ -12,7 +11,6 @@ var viewport_size = Vector2(1080, 2400)
 
 
 # Define variables for floaters
-var spawn_range = Vector2(-500, -500)
 var floater_count = 3
 var org_direction : Vector2 = viewport_size.normalized()
 var direction : Vector2 = org_direction
@@ -40,7 +38,7 @@ var spawn_directions : Dictionary = {
 }
 var spawn : Dictionary = spawn_directions[spawn_directions.keys().pick_random()]
 func _ready():
-	category_theme_manager.theme_changed.connect(change_theme)
+	Global.theme_changed.connect(change_theme)
 	for i in range(0, floaters.size.x, 500):
 		for j in range(0, floaters.size.y, 500):
 			var temp_floater = make_label_floater()

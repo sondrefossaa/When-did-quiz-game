@@ -1,8 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://wpdbirqprwk5"]
+[gd_scene load_steps=37 format=3 uid="uid://wpdbirqprwk5"]
 
 [ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://visual/border timer texture.png" id="1_kseaw"]
 [ext_resource type="Script" uid="uid://i7xuqgkag2ci" path="res://scenes/single category card/single_category_card.gd" id="1_yq817"]
-[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_kseaw"]
 [ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="4_15qw2"]
 [ext_resource type="Theme" uid="uid://crdxg5tftgbsp" path="res://visual/themes/single category card/card_general_theme.tres" id="5_gx74p"]
 [ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="6_26idk"]
@@ -134,41 +133,41 @@ _data = {
 &"show score": SubResource("Animation_bqwab")
 }
 
-[sub_resource type="SystemFont" id="SystemFont_q5obu"]
+[sub_resource type="SystemFont" id="SystemFont_15qw2"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yp3v6"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_15qw2"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(0.219608, 0.713726, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kseaw"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(1, 0.870588, 0.34902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gx74p"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(0.584314, 0.372549, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6gdn"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bqwab"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(1, 0.223529, 0.223529, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lebyw"]
-font = SubResource("SystemFont_q5obu")
+font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(0, 0.74902, 0.388235, 1)
 
@@ -264,25 +263,6 @@ offset_bottom = 2400.0
 script = ExtResource("1_yq817")
 metadata/_edit_vertical_guides_ = [732.0]
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
-modulate = Color(0.5330367, 0.5330367, 0.5330367, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.99500006
-anchor_bottom = 0.994
-offset_left = -163.0
-offset_top = -289.0
-offset_right = 129.3999
-offset_bottom = 10.399902
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
-handle_input_locally = false
-size = Vector2i(2592, 3687)
-render_target_update_mode = 4
-
-[node name="background" parent="SubViewportContainer2/SubViewport" node_paths=PackedStringArray("category_theme_manager") instance=ExtResource("2_kseaw")]
-category_theme_manager = NodePath("../../../category theme manager")
-
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 visible = false
 layout_mode = 1
@@ -324,11 +304,10 @@ unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
 
-[node name="category theme manager" parent="." node_paths=PackedStringArray("question_generator") instance=ExtResource("6_26idk")]
-unique_name_in_owner = true
-question_generator = NodePath("../question generator")
-
 [node name="question generator" parent="." instance=ExtResource("6_yp3v6")]
+unique_name_in_owner = true
+
+[node name="category theme manager" parent="." instance=ExtResource("6_26idk")]
 unique_name_in_owner = true
 
 [node name="Card and ans" type="Control" parent="."]
@@ -360,60 +339,60 @@ theme = ExtResource("5_gx74p")
 metadata/_edit_vertical_guides_ = [730.0, 13.0]
 metadata/_edit_horizontal_guides_ = [1027.0, 1050.0]
 
-[node name="MarginContainer2" type="MarginContainer" parent="Card and ans/Card bg"]
+[node name="Title" type="MarginContainer" parent="Card and ans/Card bg"]
 layout_mode = 2
 theme_override_constants/margin_top = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Card and ans/Card bg/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Card and ans/Card bg/Title"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Card and ans/Card bg/Title/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "W"
 label_settings = SubResource("LabelSettings_yp3v6")
 
-[node name="Label2" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "h"
 label_settings = SubResource("LabelSettings_15qw2")
 
-[node name="Label3" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "e"
 label_settings = SubResource("LabelSettings_kseaw")
 
-[node name="Label4" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label4" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "n"
 label_settings = SubResource("LabelSettings_gx74p")
 
-[node name="Label5" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label5" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = " "
 label_settings = SubResource("LabelSettings_g6gdn")
 
-[node name="Label6" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label6" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
 label_settings = SubResource("LabelSettings_bqwab")
 
-[node name="Label7" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label7" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "i"
 label_settings = SubResource("LabelSettings_lebyw")
 
-[node name="Label8" type="Label" parent="Card and ans/Card bg/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label8" type="Label" parent="Card and ans/Card bg/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
@@ -708,5 +687,4 @@ text = "confirm"
 icon_alignment = 1
 
 [connection signal="timeout" from="timer border indicator/question timer" to="." method="_on_question_timer_timeout"]
-[connection signal="question_created" from="question generator" to="." method="_on_question_generator_question_created"]
 [connection signal="animation_finished" from="Card and ans/score anim" to="." method="_on_main_anim_animation_finished"]
