@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://wpdbirqprwk5"]
+[gd_scene load_steps=38 format=3 uid="uid://wpdbirqprwk5"]
 
 [ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://visual/border timer texture.png" id="1_kseaw"]
 [ext_resource type="Script" uid="uid://i7xuqgkag2ci" path="res://scenes/single category card/single_category_card.gd" id="1_yq817"]
+[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_kseaw"]
 [ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="4_15qw2"]
 [ext_resource type="Theme" uid="uid://crdxg5tftgbsp" path="res://visual/themes/single category card/card_general_theme.tres" id="5_gx74p"]
 [ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="6_26idk"]
@@ -34,6 +35,38 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.693]
+}
+
+[sub_resource type="Animation" id="Animation_kseaw"]
+resource_name = "card_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1000, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_15qw2"]
+resource_name = "card_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1000, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bqwab"]
@@ -92,39 +125,8 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_15qw2"]
-resource_name = "card_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-1000, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_kseaw"]
-resource_name = "card_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1000, 0), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_th0jy"]
+resource_local_to_scene = true
 _data = {
 &"RESET": SubResource("Animation_lebyw"),
 &"card_in": SubResource("Animation_kseaw"),
@@ -262,6 +264,25 @@ offset_bottom = 2400.0
 script = ExtResource("1_yq817")
 metadata/_edit_vertical_guides_ = [732.0]
 
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+modulate = Color(0.5330367, 0.5330367, 0.5330367, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99500006
+anchor_bottom = 0.994
+offset_left = -163.0
+offset_top = -289.0
+offset_right = 129.3999
+offset_bottom = 10.399902
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(2592, 3687)
+render_target_update_mode = 4
+
+[node name="background" parent="SubViewportContainer2/SubViewport" node_paths=PackedStringArray("category_theme_manager") instance=ExtResource("2_kseaw")]
+category_theme_manager = NodePath("../../../category theme manager")
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 visible = false
 layout_mode = 1
@@ -272,13 +293,6 @@ grow_horizontal = 2
 grow_vertical = 2
 value = 73.0
 fill_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 12.0
-offset_right = 731.0
-offset_bottom = 1027.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false

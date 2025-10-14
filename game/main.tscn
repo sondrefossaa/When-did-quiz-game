@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn8psqd4pyn2m"]
+[gd_scene load_steps=2 format=3 uid="uid://cn8psqd4pyn2m"]
 
-[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_uaf1y"]
 [ext_resource type="PackedScene" uid="uid://wpdbirqprwk5" path="res://scenes/single category card/single category card.tscn" id="2_yd8kv"]
 
 [node name="Main" type="Control"]
@@ -11,28 +10,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-modulate = Color(0.5330367, 0.5330367, 0.5330367, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.99500006
-anchor_bottom = 0.994
-offset_right = -1074.6001
-offset_bottom = -2385.6
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1077, 2437)
-render_target_update_mode = 4
-
-[node name="background" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("category_theme_manager") instance=ExtResource("2_uaf1y")]
-category_theme_manager = NodePath("../../../Single category card/category theme manager")
-
 [node name="Single category card" parent="." instance=ExtResource("2_yd8kv")]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 289.0
-offset_right = 1243.0
-offset_bottom = 2689.0
-
-[editable path="Single category card"]
+offset_left = 155.0
+offset_top = 228.0
+offset_right = 1235.0
+offset_bottom = 2628.0

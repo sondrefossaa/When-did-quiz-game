@@ -87,8 +87,7 @@ func calculate_score():
 	answer_input.modulate ="ffffff"
 
 func swap_cards(temp_card):
-	var temp_anim = temp_card.get_node("score anim")
-# Remove any theme inheritance and create a flat stylebox
+	var temp_anim : AnimationPlayer = temp_card.get_node("score anim")
 	var temp_card_bg : PanelContainer = temp_card.get_node("Card bg")
 	var old_stylebox = card_and_ans.get_node("Card bg").get_theme_stylebox("panel") as StyleBoxFlat
 	var new_stylebox = old_stylebox.duplicate()
