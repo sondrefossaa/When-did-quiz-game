@@ -97,4 +97,3 @@ func change_direction():
 	for floater in floaters.get_children():
 		floater.direction = direction
 	
-	print(spawn)

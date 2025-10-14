@@ -22,7 +22,6 @@ func create_question(category = "random"):
 	# Generate question from random column in categoy index
 	var index = categories.find(category)
 	var col = index * 2
-	print(index)
 	var row = randi_range(1, qestion_count-1)
 	var question = data[row][col]
 

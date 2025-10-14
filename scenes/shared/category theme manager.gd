@@ -6,7 +6,8 @@ class_name Category_theme_manager
 signal theme_changed(category_name, new_color)
 
 var card_general_theme = preload("res://visual/themes/single category card/card_general_theme.tres")
-var currect_theme := "science"
+var current_theme := "science"
+var current_color := "38b6ff"
 var category_color = {
 	"science" : "#38b6ff",
 	"history" : "#ffde59",
@@ -21,7 +22,8 @@ func _ready():
 	
 func change_theme(category):
 	
-	currect_theme = category
+	current_theme = category
+	current_color = category_color[category]
 	#card_bg.theme_type_variation = category
 	var stlbox = card_general_theme.get_stylebox("panel", "PanelContainer")
 	stlbox.bg_color = category_color[category]

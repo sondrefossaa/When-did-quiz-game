@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://wpdbirqprwk5"]
+[gd_scene load_steps=37 format=3 uid="uid://wpdbirqprwk5"]
 
 [ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://visual/border timer texture.png" id="1_kseaw"]
 [ext_resource type="Script" uid="uid://i7xuqgkag2ci" path="res://scenes/single category card/single_category_card.gd" id="1_yq817"]
@@ -14,26 +14,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Input viewer:anchor_top")
+tracks/0/path = NodePath("%player answer text:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.693]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Input viewer/player answer text:modulate")
+tracks/1/path = NodePath("../Input viewer:anchor_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [0.693]
 }
 
 [sub_resource type="Animation" id="Animation_bqwab"]
@@ -92,9 +92,43 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_15qw2"]
+resource_name = "card_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1000, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kseaw"]
+resource_name = "card_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1000, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_th0jy"]
 _data = {
 &"RESET": SubResource("Animation_lebyw"),
+&"card_in": SubResource("Animation_kseaw"),
+&"card_out": SubResource("Animation_15qw2"),
 &"show score": SubResource("Animation_bqwab")
 }
 
@@ -239,13 +273,6 @@ grow_vertical = 2
 value = 73.0
 fill_mode = 4
 
-[node name="score anim" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-root_node = NodePath("../Card and ans/Card bg")
-libraries = {
-&"": SubResource("AnimationLibrary_th0jy")
-}
-
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
@@ -296,10 +323,17 @@ anchor_left = 0.011
 anchor_right = 0.676
 anchor_bottom = 0.428
 offset_left = -11.88
-offset_right = -11.88
+offset_right = -11.880676
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_horizontal_guides_ = [247.0, 130.0, 247.0, 247.0, 132.0, 1033.0]
+
+[node name="score anim" type="AnimationPlayer" parent="Card and ans"]
+unique_name_in_owner = true
+root_node = NodePath("../Card bg")
+libraries = {
+&"": SubResource("AnimationLibrary_th0jy")
+}
 
 [node name="Card bg" type="PanelContainer" parent="Card and ans"]
 layout_mode = 1
@@ -659,6 +693,6 @@ theme = ExtResource("8_15qw2")
 text = "confirm"
 icon_alignment = 1
 
-[connection signal="animation_finished" from="score anim" to="." method="_on_main_anim_animation_finished"]
 [connection signal="timeout" from="timer border indicator/question timer" to="." method="_on_question_timer_timeout"]
 [connection signal="question_created" from="question generator" to="." method="_on_question_generator_question_created"]
+[connection signal="animation_finished" from="Card and ans/score anim" to="." method="_on_main_anim_animation_finished"]
