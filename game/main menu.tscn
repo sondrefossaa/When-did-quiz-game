@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://calwfewnvjycf"]
+[gd_scene load_steps=11 format=3 uid="uid://calwfewnvjycf"]
 
+[ext_resource type="Script" uid="uid://cniy4t46dvoe6" path="res://game/main_menu.gd" id="1_5n37b"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="1_xdlka"]
 
 [sub_resource type="SystemFont" id="SystemFont_q5obu"]
@@ -47,6 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5n37b")
 
 [node name="background" parent="." instance=ExtResource("1_xdlka")]
 layout_mode = 1
@@ -119,16 +121,20 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -49.0
-offset_top = 689.99994
-offset_right = 115.0
-offset_bottom = 755.99994
+offset_left = -454.0
+offset_top = 628.00006
+offset_right = -290.0
+offset_bottom = 694.00006
 grow_horizontal = 2
+scale = Vector2(5.5285983, 5.5308604)
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="competitive button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Competitive mode"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="casual button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Chill mode"
+
+[connection signal="pressed" from="VBoxContainer/competitive button" to="." method="_on_competitive_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]

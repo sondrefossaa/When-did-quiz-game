@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://buu7npoxf61p1"]
+
+[ext_resource type="Script" uid="uid://cbfdbdwf2jrre" path="res://scenes/casual card/casual_card.gd" id="1_i6ke8"]
+[ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="1_ppjdh"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="2_i6ke8"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="3_vakau"]
+
+[node name="casual card" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i6ke8")
+
+[node name="Card" parent="." instance=ExtResource("1_ppjdh")]
+layout_mode = 1
+offset_left = 182.12
+offset_top = 428.0
+offset_right = 182.11932
+offset_bottom = 428.0
+
+[node name="show answer btn" type="Button" parent="Card"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 712.0
+offset_right = 522.0
+offset_bottom = 790.0
+theme_override_font_sizes/font_size = 50
+text = "Show answer"
+
+[node name="question generator" parent="." instance=ExtResource("2_i6ke8")]
+
+[node name="category theme manager" parent="." instance=ExtResource("3_vakau")]
+
+[connection signal="pressed" from="Card/show answer btn" to="." method="_on_button_pressed"]
