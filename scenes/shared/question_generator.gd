@@ -11,23 +11,21 @@ const questions = preload("res://questions/question_loader.tres") as CSVResource
 
 var categories : Array[String] = ["science", "history", "pop", "trivia", "sport"]
 var correct_answer : String
-
 # Limit question count to prevent csv "wrapping"
-var qestion_count := 131
+var question_count := 131
 
 func create_question(category = "random"):
-	# TODO : Refactor whole system
 	if category == "random":
 		category = categories.pick_random()
 	
 	# Generate question from random column in categoy index
 	var index = categories.find(category)
 	var col = index * 2
-	var row = randi_range(1, qestion_count-1)
+	var row = randi_range(1, question_count-1)
 	var question = data[row][col]
 
-	# If single categoy card
 	correct_answer = data[row][col+1]
-	#emit_signal("question_created", category)
+
 	Global.question_generated.emit(category)
-	return {"question": question, "answer": correct_answer}
+
+	return {"question": question, "answer": correct_answer, "category" : category}

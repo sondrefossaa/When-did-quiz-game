@@ -18,22 +18,22 @@ extends Control
 
 @onready var question_text = $"Card/Card bg/MarginContainer/Question text"
 
-
+@onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
 var current_question : Dictionary
 
 var no_ans_score = 1000
 var temp_score = ""
+
+# TODO update funcion with new card refactoring in mind
 func _ready():
 	Global.question_generated.connect(update_category_title)
 	player_answer_input.text = ""
 	answer_text.text = ""
 	#current_question = question_generator.create_question("random")
 	#question_text.text = current_question.question
-	current_question = question_generator.create_question("random")
-	card.update_question_text(current_question.question)
-	
-		
-		
+	#current_question = question_generator.create_question("random")
+	#card.update_question_text(current_question.question)
+
 
 
 func _process(_delta):
@@ -41,6 +41,7 @@ func _process(_delta):
 		timer_border_indicator.value = (question_timer.time_left / question_timer.wait_time) * 1000
 
 func update_category_title(category):
+	print(category)
 	category_display.text = category[0].to_upper() + category.substr(1)
 
 # Calculate score when timer runs out
@@ -49,7 +50,7 @@ func _on_question_timer_timeout():
 
 func calculate_score():
 	question_timer.stop()
-	var new_score = abs(player_answer_input.text.to_int() - current_question.answer.to_int())
+	var new_score = abs(player_answer_input.text.to_int() - card.current_question.answer.to_int())
 	
 	# If no answer given
 	if player_answer_input.text == "":
@@ -60,7 +61,7 @@ func calculate_score():
 		new_score = -100
 	# Generate new current_question after score is calculated
 	temp_score = str(new_score)
-	answer_text.text = current_question.answer
+	answer_text.text = card.current_question.answer
 
 	score_anim.play("show score")
 	await  score_anim.animation_finished
@@ -75,8 +76,9 @@ func calculate_score():
 	var temp_card = card.duplicate()
 	animate_card_exit(temp_card)
 	
-	current_question = question_generator.create_question("random")
-	question_text.text = current_question.question
+	# TODO quefree and add new card so that the card generates new question
+	#current_question = question_generator.create_question("random")
+	question_text.text = card.current_question.question
 	answer_text.text = ""
 	
 	score_anim.play("card_in")
@@ -87,13 +89,14 @@ func calculate_score():
 	player_answer_input.modulate ="ffffff"
 
 func animate_card_exit(temp_card):
+	temp_card.generate_question = false
 	var temp_anim : AnimationPlayer = temp_card.get_node("score anim")
-	var temp_card_bg : PanelContainer = temp_card.get_node("Card bg")
-	var old_stylebox = card.get_node("Card bg").get_theme_stylebox("panel") as StyleBoxFlat
-	var new_stylebox = old_stylebox.duplicate()
+	var new_stylebox = CARD_BG_DEFAULT.duplicate()
 	new_stylebox.bg_color = category_theme_manager.current_color
+	temp_card.get_node("Card bg").add_theme_stylebox_override("panel", new_stylebox)
+	#new_stylebox.bg_color = category_theme_manager.current_color
 	
-	temp_card_bg.add_theme_stylebox_override("panel", new_stylebox)
+	#temp_card_bg.add_theme_stylebox_override("panel", new_stylebox)
 
 	temp_anim.play("card_out")
 	add_child(temp_card)

@@ -141,14 +141,16 @@ unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
 
-[node name="question generator" parent="." instance=ExtResource("6_yp3v6")]
-unique_name_in_owner = true
-
 [node name="category theme manager" parent="." instance=ExtResource("6_26idk")]
 unique_name_in_owner = true
 
-[node name="Card" parent="." instance=ExtResource("5_yp3v6")]
+[node name="question generator" parent="." instance=ExtResource("6_yp3v6")]
+unique_name_in_owner = true
+
+[node name="Card" parent="." node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("5_yp3v6")]
 layout_mode = 1
+question_generator = NodePath("../question generator")
+category_theme_manager = NodePath("../category theme manager")
 
 [node name="Category display" type="Label" parent="."]
 custom_minimum_size = Vector2(300, 115)
