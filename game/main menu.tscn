@@ -54,10 +54,7 @@ script = ExtResource("1_5n37b")
 [node name="Admob" type="Node" parent="."]
 script = ExtResource("3_54k5l")
 debug_application_id = "ca-app-pub-3940256099942544~3347511713"
-debug_banner_id = "ca-app-pub-3940256099942544/9214589741"
-debug_interstitial_id = "ca-app-pub-3940256099942544/1033173712"
 debug_rewarded_id = "ca-app-pub-3940256099942544/5224354917"
-debug_rewarded_interstitial_id = "ca-app-pub-3940256099942544/5354046379"
 metadata/_custom_type_script = "uid://ciim016mkxgj4"
 
 [node name="background" parent="." instance=ExtResource("1_xdlka")]

@@ -167,8 +167,8 @@ layout_mode = 3
 anchor_left = 0.011
 anchor_right = 0.676
 anchor_bottom = 0.428
-offset_left = -11.88
-offset_right = -11.880676
+offset_left = 988.12
+offset_right = 988.1197
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ar6ke")
@@ -181,10 +181,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_th0jy")
 }
 
-[node name="BorderTimerTexture" type="Sprite2D" parent="."]
-position = Vector2(360, 513)
-texture = ExtResource("4_msloe")
-
 [node name="Card bg" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -195,6 +191,12 @@ grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_k8iif")
 metadata/_edit_vertical_guides_ = [730.0, 13.0]
 metadata/_edit_horizontal_guides_ = [1027.0, 1050.0]
+
+[node name="BorderTimerTexture" type="Sprite2D" parent="Card bg"]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(360, 513)
+texture = ExtResource("4_msloe")
 
 [node name="Title" type="MarginContainer" parent="Card bg"]
 layout_mode = 2

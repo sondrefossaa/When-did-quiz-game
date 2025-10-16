@@ -27,8 +27,6 @@ var temp_score = ""
 # TODO update funcion with new card refactoring in mind
 func _ready():
 	Global.question_generated.connect(update_category_title)
-	player_answer_input.text = ""
-	answer_text.text = ""
 	update_category_title(card.category)
 func _process(_delta):
 	if not question_timer.paused:

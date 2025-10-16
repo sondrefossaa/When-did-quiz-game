@@ -11,6 +11,7 @@ var prev_pos := Vector2.ZERO
 
 var dragging := false
 var cur_velocity = Vector2.ZERO
+
 # TODO change velocity manually for smoother feel
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -18,8 +19,6 @@ func _input(event):
 			cur_velocity = Vector2.ZERO
 	if event is InputEventScreenDrag:
 		cur_velocity = event.velocity
-		#var drag_start = event.position
-		#var delta = event.position - drag_start
 		drag_cards(event.relative.x)
 
 func drag_cards(delta_x: float) -> void:
@@ -44,7 +43,7 @@ func _process(delta):
 
 	if max_min.min.global_position.x > -CARD_WIDTH:
 		spawn_new_card("start", max_min.min.global_position.x)
-# 718.2 is card width
+		
 	if max_min.max.global_position.x < screen_width:
 		spawn_new_card("end", max_min.max.global_position.x)
 	

@@ -6,8 +6,10 @@ const MULTIPLE_CATEGORY_CARD = preload("uid://61iig0uvkhe1")
 
 @onready var admob = $Admob
 var is_initialized := false
+
 func _ready():
 	admob.initialize()
+
 func _on_competitive_button_pressed():
 	get_tree().change_scene_to_packed(MAIN)
 
@@ -20,12 +22,16 @@ func _on_multiple_choice_pressed():
 	get_tree().change_scene_to_packed(MULTIPLE_CATEGORY_CARD)
 
 
-func _on_admob_initialization_completed(status_data):
-	is_initialized = true
-
-
 func _on_get_more_questions_pressed():
 	if is_initialized:
 		admob.load_rewarded_ad()
-		await admob.banner_ad_loaded
+		await  admob.rewarded_ad_loaded
 		admob.show_rewarded_ad()
+ 
+func _on_admob_initialization_completed(status_data):
+	is_initialized = true
+
+func _on_admob_rewarded_ad_user_earned_reward(ad_id, reward_data):
+	# Update q_count
+	
+	return

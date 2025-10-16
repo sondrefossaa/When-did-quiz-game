@@ -12,9 +12,9 @@ extends Control
 @onready var card_bg = $"Card bg"
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
 @onready var show_answer_btn = $"show answer btn"
-@onready var border_timer_texture = $BorderTimerTexture
+@onready var border_timer_texture = %BorderTimerTexture
 
-
+# To prevent generating a new question when animating new card in single category card
 var generate_question = true
 var card_general_theme = preload("res://visual/themes/single category card/card_general_theme.tres")
 var current_question : Dictionary
@@ -22,6 +22,8 @@ var category = ""
 
 const SHOW_ANSWER_DEF = "Show answer"
 func _ready():
+	player_answer_text.text = ""
+	answer_text.text = ""
 	if question_generator and generate_question:
 		get_new_question()
 	if not casual:
