@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://fi246xsplije"]
+[gd_scene load_steps=21 format=3 uid="uid://fi246xsplije"]
 
 [ext_resource type="Script" uid="uid://b4ltjt07mgwkm" path="res://scenes/shared/card.gd" id="1_ar6ke"]
 [ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="2_ar6ke"]
 [ext_resource type="StyleBox" uid="uid://mgu6f7bglqa0" path="res://scenes/shared/card bg default.tres" id="2_k8iif"]
+[ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://visual/border timer texture.png" id="4_msloe"]
+[ext_resource type="Theme" uid="uid://h6r81spghghm" path="res://visual/themes/answer button.tres" id="5_5ea35"]
 
 [sub_resource type="Animation" id="Animation_lebyw"]
 length = 0.001
@@ -179,6 +181,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_th0jy")
 }
 
+[node name="BorderTimerTexture" type="Sprite2D" parent="."]
+position = Vector2(360, 513)
+texture = ExtResource("4_msloe")
+
 [node name="Card bg" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -315,3 +321,15 @@ texture = ExtResource("2_ar6ke")
 
 [node name="new answer timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="show answer btn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 681.0
+offset_right = 524.0
+offset_bottom = 952.0
+theme = ExtResource("5_5ea35")
+theme_override_font_sizes/font_size = 50
+text = "Show answer"
+
+[connection signal="pressed" from="show answer btn" to="." method="_on_show_answer_btn_pressed"]

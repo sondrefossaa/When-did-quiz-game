@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://61iig0uvkhe1"]
+[gd_scene load_steps=25 format=3 uid="uid://61iig0uvkhe1"]
 
 [ext_resource type="Script" uid="uid://cf6ahk3rd42su" path="res://scenes/card all category/multiple category card.gd" id="1_46u86"]
-[ext_resource type="Script" uid="uid://bmi0j0046pdag" path="res://scenes/card all category/show_answers.gd" id="2_im5jp"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_twxw3"]
 [ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="3_twxw3"]
 [ext_resource type="Script" uid="uid://by0n24lqoatqf" path="res://scenes/card all category/answer_buttons.gd" id="4_tlj86"]
@@ -68,25 +67,6 @@ font = SubResource("SystemFont_qm5my")
 font_size = 40
 font_color = Color(0.219608, 0.713726, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ufkr"]
-bg_color = Color(0.219608, 0.713726, 1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g65cd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.219608, 0.713726, 1, 1)
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kaf1t"]
-bg_color = Color(0.219608, 0.713726, 1, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_b4rk6"]
 font = SubResource("SystemFont_qm5my")
 font_size = 40
@@ -133,25 +113,24 @@ grow_vertical = 2
 script = ExtResource("1_46u86")
 metadata/_edit_horizontal_guides_ = [247.0, 130.0, 247.0, 247.0, 132.0]
 
-[node name="background" parent="." node_paths=PackedStringArray("category_theme_manager") instance=ExtResource("2_twxw3")]
+[node name="background" parent="." instance=ExtResource("2_twxw3")]
 layout_mode = 1
 offset_left = -174.0
 offset_top = -441.0
 offset_right = 184.79999
 offset_bottom = 933.80005
-category_theme_manager = NodePath("../category theme manager")
 
 [node name="Panelcontainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -2.0
-offset_right = 6.79993
-offset_bottom = 1.79993
+offset_left = -68.0
+offset_right = -55.200073
+offset_bottom = 3.7999268
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wvsy")
 metadata/_edit_vertical_guides_ = [730.0, 13.0]
 metadata/_edit_horizontal_guides_ = [1027.0, 1050.0]
@@ -244,14 +223,6 @@ anchor_bottom = 1.1
 offset_top = -0.399994
 color = Color(0.219608, 0.713726, 1, 1)
 
-[node name="Show answers" type="Button" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer"]
-show_behind_parent = true
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_2ufkr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_g65cd")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kaf1t")
-script = ExtResource("2_im5jp")
-
 [node name="MarginContainer2" type="MarginContainer" parent="Panelcontainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
@@ -342,8 +313,13 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.2
+offset_left = -63.0
+offset_top = 247.80005
+offset_right = -63.0
+offset_bottom = 247.80005
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1.2, 1.2)
 theme_override_constants/margin_top = 40
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
@@ -392,10 +368,8 @@ script = ExtResource("6_bvk0x")
 
 [node name="question generator" parent="." instance=ExtResource("7_lfjv7")]
 
-[node name="category theme manager" parent="." node_paths=PackedStringArray("question_generator") instance=ExtResource("8_im5jp")]
-question_generator = NodePath("../question generator")
+[node name="category theme manager" parent="." instance=ExtResource("8_im5jp")]
 
-[connection signal="pressed" from="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer/Show answers" to="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer/Show answers" method="_on_pressed"]
 [connection signal="timeout" from="new answer timer" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" method="_on_new_answer_timer_timeout"]
 [connection signal="new_question" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" to="." method="_on_answer_buttons_new_question"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer1" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer1" method="_on_pressed"]

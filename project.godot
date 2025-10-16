@@ -30,6 +30,10 @@ window/handheld/orientation=1
 
 theme/default_font_multichannel_signed_distance_field=true
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 renderer/rendering_method="mobile"

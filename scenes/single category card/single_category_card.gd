@@ -29,13 +29,7 @@ func _ready():
 	Global.question_generated.connect(update_category_title)
 	player_answer_input.text = ""
 	answer_text.text = ""
-	#current_question = question_generator.create_question("random")
-	#question_text.text = current_question.question
-	#current_question = question_generator.create_question("random")
-	#card.update_question_text(current_question.question)
-
-
-
+	update_category_title(card.category)
 func _process(_delta):
 	if not question_timer.paused:
 		timer_border_indicator.value = (question_timer.time_left / question_timer.wait_time) * 1000
@@ -76,11 +70,9 @@ func calculate_score():
 	var temp_card = card.duplicate()
 	animate_card_exit(temp_card)
 	
-	# TODO quefree and add new card so that the card generates new question
-	#current_question = question_generator.create_question("random")
 	question_text.text = card.current_question.question
 	answer_text.text = ""
-	
+	card.get_new_question()
 	score_anim.play("card_in")
 	await score_anim.animation_finished
 	temp_card.queue_free()

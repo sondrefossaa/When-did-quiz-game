@@ -151,6 +151,7 @@ unique_name_in_owner = true
 layout_mode = 1
 question_generator = NodePath("../question generator")
 category_theme_manager = NodePath("../category theme manager")
+casual = false
 
 [node name="Category display" type="Label" parent="."]
 custom_minimum_size = Vector2(300, 115)

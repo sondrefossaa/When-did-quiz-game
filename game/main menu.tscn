@@ -55,9 +55,10 @@ layout_mode = 1
 
 [node name="Title2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = -821.0001
-offset_right = 258.99988
-offset_bottom = 2400.0
+offset_left = -821.0
+offset_top = 261.99997
+offset_right = 259.0
+offset_bottom = 2662.0
 scale = Vector2(2.5, 2.5)
 theme_override_constants/margin_top = 15
 
@@ -122,9 +123,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -454.0
-offset_top = 628.00006
+offset_top = 920.0
 offset_right = -290.0
-offset_bottom = 694.00006
+offset_bottom = 986.0
 grow_horizontal = 2
 scale = Vector2(5.5285983, 5.5308604)
 
@@ -132,9 +133,22 @@ scale = Vector2(5.5285983, 5.5308604)
 layout_mode = 2
 text = "Competitive mode"
 
+[node name="multiple choice" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multiple choice"
+
 [node name="casual button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Chill mode"
 
+[node name="Last q margin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+
+[node name="Get more questions" type="Button" parent="VBoxContainer/Last q margin"]
+layout_mode = 2
+text = "Get more questions"
+
 [connection signal="pressed" from="VBoxContainer/competitive button" to="." method="_on_competitive_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/multiple choice" to="." method="_on_multiple_choice_pressed"]
 [connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]

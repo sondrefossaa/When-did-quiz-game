@@ -2,7 +2,7 @@ extends Control
 
 @export var question_generator : questionGenerator = null
 @export var category_theme_manager : categoryThemeManager = null
-
+@export var casual = true
 
 @onready var input_container = %"input margin"
 @onready var player_answer_text = %"player answer text"
@@ -11,21 +11,28 @@ extends Control
 @onready var question_text = $"Card bg/MarginContainer/Question text"
 @onready var card_bg = $"Card bg"
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
-@onready var show_answer_btn = get_node("show answer btn")
+@onready var show_answer_btn = $"show answer btn"
+@onready var border_timer_texture = $BorderTimerTexture
+
 
 var generate_question = true
 var card_general_theme = preload("res://visual/themes/single category card/card_general_theme.tres")
 var current_question : Dictionary
+var category = ""
 
 const SHOW_ANSWER_DEF = "Show answer"
 func _ready():
 	if question_generator and generate_question:
-		current_question = question_generator.create_question()
-		update_question_text(current_question.question)
-		update_bg_color(category_theme_manager.category_color[current_question.category])
-		print(current_question.question)
+		get_new_question()
+	if not casual:
+		show_answer_btn.visible = false
+		border_timer_texture.visible = false
 
-
+func get_new_question():
+	current_question = question_generator.create_question()
+	category = current_question.category
+	update_question_text(current_question.question)
+	update_bg_color(category_theme_manager.category_color[current_question.category])
 func update_question_text(new_question : String):
 	question_text.text = new_question
 

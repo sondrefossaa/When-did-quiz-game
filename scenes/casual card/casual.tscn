@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://buu7npoxf61p1"]
+
+[ext_resource type="Script" uid="uid://cbfdbdwf2jrre" path="res://scenes/casual card/casual_card.gd" id="1_i6ke8"]
+[ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="1_ppjdh"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="2_i6ke8"]
+[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_vakau"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="3_vakau"]
+
+[node name="casual mode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i6ke8")
+metadata/_edit_vertical_guides_ = [1008.0]
+
+[node name="question generator" parent="." instance=ExtResource("2_i6ke8")]
+
+[node name="category theme manager" parent="." instance=ExtResource("3_vakau")]
+
+[node name="background" parent="." instance=ExtResource("2_vakau")]
+layout_mode = 1
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="cards container" type="Node" parent="."]
+
+[node name="Card3" parent="cards container" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_ppjdh")]
+offset_left = -488.88
+offset_top = 428.0
+offset_right = -488.88007
+offset_bottom = 428.0
+question_generator = NodePath("../../question generator")
+category_theme_manager = NodePath("../../category theme manager")
+
+[node name="Card" parent="cards container" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_ppjdh")]
+offset_left = 287.12
+offset_top = 428.0
+offset_right = 287.11993
+offset_bottom = 428.0
+question_generator = NodePath("../../question generator")
+category_theme_manager = NodePath("../../category theme manager")
+
+[node name="Card2" parent="cards container" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_ppjdh")]
+offset_left = 1068.12
+offset_top = 428.0
+offset_right = 1068.1199
+offset_bottom = 428.0
+question_generator = NodePath("../../question generator")
+category_theme_manager = NodePath("../../category theme manager")
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(1671, 447)
