@@ -26,6 +26,10 @@ window/size/viewport_height=2400
 window/stretch/mode="viewport"
 window/handheld/orientation=1
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AdmobPlugin/plugin.cfg")
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
