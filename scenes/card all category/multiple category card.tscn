@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://61iig0uvkhe1"]
+[gd_scene load_steps=30 format=3 uid="uid://61iig0uvkhe1"]
 
 [ext_resource type="Script" uid="uid://cf6ahk3rd42su" path="res://scenes/card all category/multiple category card.gd" id="1_46u86"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_twxw3"]
@@ -98,6 +98,117 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_im5jp"]
+Label/font_sizes/font_size = 50
+
+[sub_resource type="Animation" id="Animation_th0jy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_g6gdn"]
+resource_name = "score added"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.341, 0.341), Vector2(0.495, 0.495), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gx74p"]
+resource_name = "score added start"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.04750033, -0.8591746, 0.086, -0.052499652, 0.08061385, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.014166995, -0.826332, 0.086, -0.05071062, 0.08359954, 0, 0),
+"times": PackedFloat32Array(0, 0.998211)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gx74p"]
+_data = {
+&"RESET": SubResource("Animation_th0jy"),
+&"score added": SubResource("Animation_g6gdn"),
+&"score added start": SubResource("Animation_gx74p")
+}
 
 [node name="Multiple category card" type="Control"]
 layout_mode = 3
@@ -227,14 +338,14 @@ color = Color(0.219608, 0.713726, 1, 1)
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
 
-[node name="History qusetion" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2"]
+[node name="History question" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 2
 text = "Alexander Flemming discover penicillin"
 label_settings = SubResource("LabelSettings_b4rk6")
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History qusetion"]
+[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History question"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.05
@@ -369,6 +480,24 @@ script = ExtResource("6_bvk0x")
 [node name="question generator" parent="." instance=ExtResource("7_lfjv7")]
 
 [node name="category theme manager" parent="." instance=ExtResource("8_im5jp")]
+
+[node name="Score value" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -192.0
+offset_right = 720.9999
+offset_bottom = -52.41667
+pivot_offset = Vector2(360.5, 34.896)
+size_flags_horizontal = 3
+theme = SubResource("Theme_im5jp")
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+
+[node name="score add anim" type="AnimationPlayer" parent="Score value"]
+libraries = {
+&"": SubResource("AnimationLibrary_gx74p")
+}
 
 [connection signal="timeout" from="new answer timer" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" method="_on_new_answer_timer_timeout"]
 [connection signal="new_question" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" to="." method="_on_answer_buttons_new_question"]

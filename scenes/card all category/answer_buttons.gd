@@ -45,6 +45,7 @@ func answer_chosen(correct, clicked_button):
 		else:
 			button.theme = WRONG_THEME
 	if correct:
+		%"Score value".text = str(%"Score value".text.to_int() + 1)
 		right = true
 		"""button.add_theme_color_override("font_hover_color", Color.GREEN)
 		button.add_theme_color_override("font_color", Color.GREEN)

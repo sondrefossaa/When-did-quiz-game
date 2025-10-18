@@ -2,7 +2,7 @@ extends Control
 #@onready var question_container = $Question
 #@onready var answer_container = $Answer
 @onready var science_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer/Science question"
-@onready var history_qusetion = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History qusetion"
+@onready var history_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History question"
 @onready var pop_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer3/Pop question"
 @onready var trivia_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer4/Trivia question"
 @onready var sport_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer5/Sport question"
@@ -18,16 +18,21 @@ var current_question : Dictionary
 func _ready():
 	question_dict = {
 	"science" : science_question,
-	"history" : history_qusetion,
+	"history" : history_question,
 	"pop" : pop_question,
 	"trivia" : trivia_question,
 	"sport" : sport_question,
 	}
-	
+	for category in question_dict:
+		#question_dict[category].text = question_generator.create_question(category).question
+		question_dict[category].text = ""
 	current_question = question_generator.create_question(current_category)
-	
 	question_dict[current_category].text = current_question.question
 	gen_multiple_choice("unused")
+
+
+	
+
 
 func gen_multiple_choice(_category):
 	var answer = current_question.answer.to_int()

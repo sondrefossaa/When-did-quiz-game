@@ -12,21 +12,6 @@ size = Vector2(706.66675, 1020)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuw10"]
 size = Vector2(2682.5, 1052.5)
 
-[sub_resource type="Animation" id="Animation_ak2ly"]
-resource_name = "wrong answer"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bg:modulate")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.14, 0.27333334, 0.3, 0.43333334),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1), Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1), Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_cuw10"]
 length = 0.001
 tracks/0/type = "value"
@@ -40,6 +25,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.6955031, 0.6955032, 0.6955029, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ak2ly"]
+resource_name = "wrong answer"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.14, 0.27333334, 0.3, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1), Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1), Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vuipj"]
@@ -112,7 +112,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.495, 0.495), Vector2(1, 1)]
+"values": [Vector2(0.341, 0.341), Vector2(0.495, 0.495), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -172,6 +172,12 @@ script = ExtResource("1_jxg8b")
 [node name="Bg" parent="." instance=ExtResource("2_ak2ly")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 2592.0
+offset_bottom = 3687.0
 
 [node name="category theme manager" parent="." instance=ExtResource("2_6dfq3")]
 
@@ -184,9 +190,9 @@ anchor_top = -0.19477917
 anchor_right = -0.09145372
 anchor_bottom = -0.19477916
 offset_left = 472.77002
-offset_top = 686.47003
+offset_top = 2067.47
 offset_right = 1190.97
-offset_bottom = 1713.6699
+offset_bottom = 3094.67
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.4, 0.4)
@@ -255,15 +261,23 @@ libraries = {
 
 [node name="Score value" type="Label" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 538.0
-offset_top = 178.0
-offset_right = 1258.9999
-offset_bottom = 247.79169
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.5
+offset_top = -700.0
+offset_right = 360.49988
+offset_bottom = -630.20825
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(360.5, 34.896)
 size_flags_horizontal = 3
 theme = SubResource("Theme_ak2ly")
-text = "0"
+theme_override_font_sizes/font_size = 200
+text = "1"
 horizontal_alignment = 1
 
 [node name="score add anim" type="AnimationPlayer" parent="Score value"]

@@ -13,22 +13,23 @@ var hover_offset := Vector2.ZERO
 var drag_offset_x := 0.0
 var added = false
 var hover_over := false
-
+var drag_vel_x := 0.0
 func _input(event):
 	if event is InputEventScreenDrag:
 		if not hovering:
+			drag_vel_x = event.velocity.x
 			drag_cards(event.relative.x)
 
 
 func drag_cards(delta_x: float) -> void:
-	drag_offset_x += delta_x
-
+	if not (timeline_cards.get_children()[-1].global_position.x < 0 and drag_vel_x < 0):
+		if not (timeline_cards.get_children()[0].global_position.x > get_viewport_rect().size.x - card.size.x * 0.4 and drag_vel_x > 0): 
+			drag_offset_x += delta_x
 
 func _ready():
 	score_add_anim.speed_scale = 3
 	hover_start_btn.button_down.connect(hover_start)
 	hover_start_btn.button_up.connect(hover_end)
-	update_card_pos()
 	for timeline_card in timeline_cards.get_children():
 		timeline_card.reveal_answer()
 		timeline_card_orgin = timeline_card.global_position
@@ -66,15 +67,15 @@ func _process(_delta):
 			var score = score_value.text.to_int()
 			score_add_anim.play("score added start")
 			await score_add_anim.animation_finished
-			score_value.text = str(score + 1)
+			
 			score_add_anim.play("score added")
+			score_value.text = str(score + 1)
 	update_card_pos()
 
 
 func is_valid_insertion(new_card: Node, index: int) -> bool:
 	var child_count = timeline_cards.get_child_count()
 	var new_value: int = new_card.current_question.answer.to_int()
-
 	if index - 1 >= 0 and index + 1 < child_count:
 		var prev: int = timeline_cards.get_child(index - 1).current_question.answer.to_int()
 		var next: int = timeline_cards.get_child(index + 1).current_question.answer.to_int()

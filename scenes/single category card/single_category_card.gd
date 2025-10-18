@@ -18,7 +18,7 @@ extends Control
 
 @onready var question_text = $"Card/Card bg/MarginContainer/Question text"
 @onready var score_add_anim = $"Score value/score add anim"
-
+@onready var input_container = $"Card/input container"
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
 var current_question : Dictionary
 
@@ -59,11 +59,11 @@ func calculate_score():
 	score_anim.play("show score")
 	await  score_anim.animation_finished
 	#score_anim.play("RESET")
-	# Something wrong with reset track so have to reset pos manually
-	card.input_container.position.y = 712.2
+	# Reset player answer pos
+	input_container.position.y = 712.2
 	player_answer_input.text = ""
 	score_value.text = str(score_value.text.to_int() + temp_score.to_int())
-	score_add_anim.queue("score added")
+	score_add_anim.play("score added")
 	
 	temp_score = ""
 	# Show answer for 1 second
