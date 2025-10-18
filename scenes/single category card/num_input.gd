@@ -3,7 +3,7 @@ extends PanelContainer
 
 @onready var question_generator = $"../question generator"
 @onready var score_value = %"Score value"
-@onready var answer_input = card.player_answer_text
+@onready var answer_input = %"player answer text"
 
 
 @onready var back_button = $"Number input/Row4/back button"

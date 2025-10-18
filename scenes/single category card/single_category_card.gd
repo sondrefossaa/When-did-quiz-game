@@ -1,8 +1,8 @@
 extends Control
 
 @onready var card = $"Card"
-@onready var player_answer_input = card.player_answer_text
-@onready var answer_text = card.answer_text
+@onready var player_answer_input = %"player answer text"
+@onready var answer_text = %"answer text"
 
 @onready var num_input = %"num input"
 
@@ -14,9 +14,10 @@ extends Control
 @onready var timer_border_indicator = %"timer border indicator"
 @onready var score_value = %"Score value"
 @onready var category_display = $"Category display"
-@onready var score_anim = card.score_anim
+@onready var score_anim = %"score anim"
 
 @onready var question_text = $"Card/Card bg/MarginContainer/Question text"
+@onready var score_add_anim = $"Score value/score add anim"
 
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
 var current_question : Dictionary
@@ -26,6 +27,8 @@ var temp_score = ""
 
 # TODO update funcion with new card refactoring in mind
 func _ready():
+	player_answer_input.text = ""
+	answer_text.text = ""
 	Global.question_generated.connect(update_category_title)
 	update_category_title(card.category)
 func _process(_delta):
@@ -33,7 +36,6 @@ func _process(_delta):
 		timer_border_indicator.value = (question_timer.time_left / question_timer.wait_time) * 1000
 
 func update_category_title(category):
-	print(category)
 	category_display.text = category[0].to_upper() + category.substr(1)
 
 # Calculate score when timer runs out
@@ -54,15 +56,14 @@ func calculate_score():
 	# Generate new current_question after score is calculated
 	temp_score = str(new_score)
 	answer_text.text = card.current_question.answer
-	$"Score value/score animation".play("score added start")
 	score_anim.play("show score")
 	await  score_anim.animation_finished
-	score_anim.play("RESET")
+	#score_anim.play("RESET")
 	# Something wrong with reset track so have to reset pos manually
 	card.input_container.position.y = 712.2
 	player_answer_input.text = ""
 	score_value.text = str(score_value.text.to_int() + temp_score.to_int())
-	$"Score value/score animation".play("score added")
+	score_add_anim.queue("score added")
 	
 	temp_score = ""
 	# Show answer for 1 second

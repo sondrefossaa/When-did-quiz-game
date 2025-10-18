@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfkj408orlm4r"]
+
+[ext_resource type="Script" uid="uid://devmn4nt3txfc" path="res://scenes/timeline/timeline.gd" id="1_jxg8b"]
+[ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="1_likvl"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="2_6dfq3"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="3_jxg8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2ly"]
+size = Vector2(706.66675, 1020)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuw10"]
+size = Vector2(2682.5, 1052.5)
+
+[node name="timeline" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jxg8b")
+
+[node name="category theme manager" parent="." instance=ExtResource("2_6dfq3")]
+
+[node name="question generator" parent="." instance=ExtResource("3_jxg8b")]
+
+[node name="card" parent="." node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
+layout_mode = 1
+anchor_left = -0.09145372
+anchor_top = -0.19477917
+anchor_right = -0.09145372
+anchor_bottom = -0.19477916
+offset_left = 472.77002
+offset_top = 686.47003
+offset_right = 1190.97
+offset_bottom = 1713.6699
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.4, 0.4)
+question_generator = NodePath("../question generator")
+category_theme_manager = NodePath("../category theme manager")
+
+[node name="Hover start" type="Button" parent="card"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="card hover col" type="Area2D" parent="card"]
+position = Vector2(346.66666, 516.66656)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="card/card hover col"]
+position = Vector2(13.333374, 0)
+shape = SubResource("RectangleShape2D_ak2ly")
+
+[node name="card drop area" type="Area2D" parent="."]
+position = Vector2(520, 1180)
+scale = Vector2(0.4, 0.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="card drop area"]
+position = Vector2(61.25, 8.75)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_cuw10")
+
+[node name="timeline cards" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+
+[node name="Card2" parent="timeline cards" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -339.10004
+offset_top = -493.6001
+offset_right = 379.09998
+offset_bottom = 533.59985
+question_generator = NodePath("../../question generator")
+category_theme_manager = NodePath("../../category theme manager")
+
+[node name="Card3" parent="timeline cards" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -339.10004
+offset_top = -493.6001
+offset_right = 379.09998
+offset_bottom = 533.59985
+question_generator = NodePath("../../question generator")
+category_theme_manager = NodePath("../../category theme manager")
+
+[node name="Card4" parent="timeline cards" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -339.10004
+offset_top = -493.6001
+offset_right = 379.09998
+offset_bottom = 533.59985
+question_generator = NodePath("../../question generator")
+category_theme_manager = NodePath("../../category theme manager")
+
+[connection signal="area_entered" from="card drop area" to="." method="_on_card_drop_area_area_entered"]
+[connection signal="area_exited" from="card drop area" to="." method="_on_card_drop_area_area_exited"]

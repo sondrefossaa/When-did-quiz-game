@@ -27,11 +27,8 @@ func drag_cards(delta_x: float) -> void:
 		card.position.x += delta_x
 	speed = delta_x / get_process_delta_time()
 func _ready():
+	pass
 	# Make competitive specific featur invisible
-	for card in cards:
-		card.player_answer_text.visible = false
-		card.answer_text.visible = false
-
 
 func _process(delta):
 	var screen_width = get_viewport_rect().size.x

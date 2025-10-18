@@ -4,10 +4,6 @@ extends Control
 @export var category_theme_manager : categoryThemeManager = null
 @export var casual = true
 
-@onready var input_container = $"input container"
-@onready var player_answer_text = %"player answer text"
-@onready var answer_text = %"answer text"
-@onready var score_anim = %"score anim"
 @onready var question_text = $"Card bg/MarginContainer/Question text"
 @onready var card_bg = $"Card bg"
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
@@ -22,8 +18,6 @@ var category = ""
 
 const SHOW_ANSWER_DEF = "Show answer"
 func _ready():
-	player_answer_text.text = ""
-	answer_text.text = ""
 	if question_generator and generate_question:
 		get_new_question()
 	if not casual:
@@ -52,6 +46,3 @@ func _on_show_answer_btn_pressed():
 		#current_question = question_generator.create_question()
 		#update_question_text(current_question.question)
 		#update_bg_color(category_theme_manager.category_color[current_question.category])
-func show_score():
-	var score = abs(current_question.answer.to_int() - player_answer_text.text.to_int())
-	answer_text.text = str(score)
