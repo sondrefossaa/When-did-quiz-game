@@ -2,29 +2,52 @@
 
 [ext_resource type="Script" uid="uid://mntx5nefdify" path="res://visual/background/background.gd" id="1_n5ngf"]
 
-[node name="background" type="Control"]
+[node name="Bg" type="SubViewportContainer"]
+modulate = Color(0.6955031, 0.6955032, 0.6955029, 1)
+anchors_preset = -1
+anchor_right = 0.99500006
+anchor_bottom = 0.994
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 2593.0
+offset_bottom = 3693.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1080, 2400)
+render_target_update_mode = 4
+
+[node name="background" type="Control" parent="SubViewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 636.0
+offset_top = 287.0
+offset_right = 636.0
+offset_bottom = 287.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_n5ngf")
 
-[node name="main bg" type="ColorRect" parent="."]
+[node name="main bg" type="ColorRect" parent="SubViewport/background"]
 layout_mode = 0
-offset_left = -1038.0
-offset_top = -508.0
-offset_right = -998.0
-offset_bottom = -468.0
+offset_left = -636.0
+offset_top = -287.0
+offset_right = -596.0
+offset_bottom = -247.0
 scale = Vector2(90.44527, 80.73902)
 
-[node name="floaters" type="Control" parent="."]
+[node name="floaters" type="Control" parent="SubViewport/background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -636.0
+offset_top = -287.0
+offset_right = -636.0
+offset_bottom = -287.0
 grow_horizontal = 2
 grow_vertical = 2

@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var score_value = %"Score value"
 @onready var answer_input = card.player_answer_text
 
+
 @onready var back_button = $"Number input/Row4/back button"
 @onready var confirm_button = $"Number input/Row4/confirm button"
 @onready var category_theme_manager = $"../category theme manager"
@@ -23,7 +24,7 @@ func _ready():
 
 func register_button_input(pressed_button :Button):
 	if pressed_button.is_in_group("numpad"):
-		if answer_input.text.length() < 4:
+		if answer_input.text.length() < 4 and answer_input.text != "?":
 			answer_input.text += pressed_button.text
 			
 	if pressed_button.is_in_group("back"):

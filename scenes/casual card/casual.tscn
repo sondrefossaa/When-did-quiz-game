@@ -16,28 +16,6 @@ grow_vertical = 2
 script = ExtResource("1_i6ke8")
 metadata/_edit_vertical_guides_ = [1008.0]
 
-[node name="Bg" type="SubViewportContainer" parent="."]
-modulate = Color(0.5330367, 0.5330367, 0.5330367, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.99500006
-anchor_bottom = 0.994
-offset_left = -635.0
-offset_top = -281.0
-offset_right = 1957.0
-offset_bottom = 3406.0
-
-[node name="SubViewport" type="SubViewport" parent="Bg"]
-handle_input_locally = false
-size = Vector2i(2592, 3687)
-render_target_update_mode = 4
-
-[node name="background" parent="Bg/SubViewport" instance=ExtResource("2_vakau")]
-offset_left = 635.0
-offset_top = 281.0
-offset_right = 635.0
-offset_bottom = 281.0
-
 [node name="question generator" parent="." instance=ExtResource("2_i6ke8")]
 
 [node name="category theme manager" parent="." instance=ExtResource("3_vakau")]
@@ -74,3 +52,10 @@ category_theme_manager = NodePath("../../category theme manager")
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(1671, 447)
+
+[node name="background" parent="." instance=ExtResource("2_vakau")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1517.3999
+offset_bottom = 1301.3999

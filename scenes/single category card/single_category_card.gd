@@ -54,16 +54,19 @@ func calculate_score():
 	# Generate new current_question after score is calculated
 	temp_score = str(new_score)
 	answer_text.text = card.current_question.answer
-
+	$"Score value/score animation".play("score added start")
 	score_anim.play("show score")
 	await  score_anim.animation_finished
 	score_anim.play("RESET")
-	# Reset input viewer position
-	card.input_container.anchor_top = 0.693
+	# Something wrong with reset track so have to reset pos manually
+	card.input_container.position.y = 712.2
 	player_answer_input.text = ""
 	score_value.text = str(score_value.text.to_int() + temp_score.to_int())
-	answer_text.text = str(temp_score)
+	$"Score value/score animation".play("score added")
+	
 	temp_score = ""
+	# Show answer for 1 second
+	await get_tree().create_timer(1).timeout
 	# Copy current card, generate new and animate their swap
 	var temp_card = card.duplicate()
 	animate_card_exit(temp_card)

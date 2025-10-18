@@ -1,5 +1,6 @@
 extends Node
 
+# TODO fix floater spawn position
 @onready var main_bg = $"main bg"
 @onready var floaters = $floaters
 const BG_FLOATER = preload("uid://3tfn7w2ooy63")
@@ -62,6 +63,8 @@ func spawn_floaters():
 		else:
 			floaters.add_child(temp_floaterX)
 			floaters.add_child(temp_floaterY)
+		#print(temp_floaterX.position, ", ", temp_floaterY.position )
+		
 	await get_tree().create_timer(spawn_interval).timeout
 	spawn_floaters()
 	

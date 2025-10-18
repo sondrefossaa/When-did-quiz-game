@@ -4,7 +4,7 @@ extends Control
 @export var category_theme_manager : categoryThemeManager = null
 @export var casual = true
 
-@onready var input_container = %"input margin"
+@onready var input_container = $"input container"
 @onready var player_answer_text = %"player answer text"
 @onready var answer_text = %"answer text"
 @onready var score_anim = %"score anim"
@@ -52,3 +52,6 @@ func _on_show_answer_btn_pressed():
 		#current_question = question_generator.create_question()
 		#update_question_text(current_question.question)
 		#update_bg_color(category_theme_manager.category_color[current_question.category])
+func show_score():
+	var score = abs(current_question.answer.to_int() - player_answer_text.text.to_int())
+	answer_text.text = str(score)

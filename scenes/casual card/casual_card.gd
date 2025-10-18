@@ -7,24 +7,25 @@ const CARD_WIDTH = 718.2
 const card_margin = 70
 var question : Dictionary
 var answer_btn_def_text = "Show answer"
-var prev_pos := Vector2.ZERO
 
+var prev_pos := 0.0
 var dragging := false
-var cur_velocity = Vector2.ZERO
-
+var cur_velocity := 0.0
+var movement := 0.0
+var speed := 0.0
 # TODO change velocity manually for smoother feel
 func _input(event):
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			cur_velocity = Vector2.ZERO
 	if event is InputEventScreenDrag:
-		cur_velocity = event.velocity
 		drag_cards(event.relative.x)
+		dragging = true
+		cur_velocity = speed
+	else:
+		dragging = false
 
 func drag_cards(delta_x: float) -> void:
 	for card in cards:
-		card.global_position.x += delta_x
-
+		card.position.x += delta_x
+	speed = delta_x / get_process_delta_time()
 func _ready():
 	# Make competitive specific featur invisible
 	for card in cards:
@@ -36,17 +37,15 @@ func _process(delta):
 	var screen_width = get_viewport_rect().size.x
 	cards = cards_container.get_children()
 	var max_min = get_max_min_width()
-	
-	if cur_velocity != Vector2.ZERO:
-		drag_cards(cur_velocity.x * delta)
-		cur_velocity.x = lerp(cur_velocity.x, 0.0, delta * 1.0)
+	if cur_velocity != 0 and not dragging:
+		drag_cards(cur_velocity * delta)
+		cur_velocity = lerp(cur_velocity, 0.0, delta * 1.0)
 
 	if max_min.min.global_position.x > -CARD_WIDTH:
 		spawn_new_card("start", max_min.min.global_position.x)
 		
 	if max_min.max.global_position.x < screen_width:
 		spawn_new_card("end", max_min.max.global_position.x)
-	
 	
 func spawn_new_card(pos: String, card_pos) -> void:
 	var temp_card := cards[0].duplicate() as Control

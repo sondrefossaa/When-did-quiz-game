@@ -148,6 +148,10 @@ text = "Multiple choice"
 layout_mode = 2
 text = "Chill mode"
 
+[node name="Timeline" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Timeline"
+
 [node name="Last q margin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 100

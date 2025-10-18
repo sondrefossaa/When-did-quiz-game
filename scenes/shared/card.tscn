@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://fi246xsplije"]
+[gd_scene load_steps=23 format=3 uid="uid://fi246xsplije"]
 
 [ext_resource type="Script" uid="uid://b4ltjt07mgwkm" path="res://scenes/shared/card.gd" id="1_ar6ke"]
 [ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="2_ar6ke"]
@@ -11,26 +11,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../input margin/player answer text:modulate")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../input margin:anchor_top")
+tracks/1/path = NodePath("input container/player answer text:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.693]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("input container:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(209.09975, 712.19995)]
 }
 
 [sub_resource type="Animation" id="Animation_kseaw"]
@@ -39,7 +51,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +67,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,39 +79,39 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bqwab"]
 resource_name = "show score"
-length = 1.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../input margin:anchor_top")
+tracks/0/path = NodePath("input container/player answer text:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.693, 1.143]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../input margin/player answer text:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.566667),
+"times": PackedFloat32Array(0, 0.5666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("input container:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(209.09975, 712.19995), Vector2(209.1, 857.71)]
+}
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../..")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.566667),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -154,10 +166,18 @@ font = SubResource("SystemFont_15qw2")
 font_size = 65
 font_color = Color(0, 0.74902, 0.388235, 1)
 
-[sub_resource type="SystemFont" id="SystemFont_qm5my"]
+[sub_resource type="SystemFont" id="SystemFont_msloe"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_26idk"]
+font = SubResource("SystemFont_msloe")
+font_size = 60
+outline_color = Color(0.243137, 0.352941, 0.462745, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_qm5my"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_msloe"]
 font = SubResource("SystemFont_qm5my")
 font_size = 60
 outline_color = Color(0.243137, 0.352941, 0.462745, 1)
@@ -167,16 +187,16 @@ layout_mode = 3
 anchor_left = 0.011
 anchor_right = 0.676
 anchor_bottom = 0.428
-offset_left = 988.12
-offset_right = 988.1197
+offset_left = -11.88
+offset_right = -11.880432
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ar6ke")
 metadata/_edit_horizontal_guides_ = [247.0, 130.0, 247.0, 247.0, 132.0, 1033.0]
+metadata/_edit_use_anchors_ = true
 
 [node name="score anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-root_node = NodePath("../Card bg")
 libraries = {
 &"": SubResource("AnimationLibrary_th0jy")
 }
@@ -270,52 +290,6 @@ label_settings = SubResource("LabelSettings_26idk")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="input margin" type="MarginContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.291
-anchor_top = 0.693
-anchor_right = 0.709
-anchor_bottom = 1.143
-offset_left = 0.103759766
-offset_top = 0.3503418
-offset_right = -0.1038208
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-theme_override_constants/margin_bottom = 200
-
-[node name="player answer text" type="Label" parent="input margin"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 115)
-layout_mode = 2
-size_flags_vertical = 1
-text = "1200"
-label_settings = SubResource("LabelSettings_26idk")
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="correct answer" type="MarginContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 5.0
-offset_top = 857.2
-offset_right = 713.2
-offset_bottom = 1022.2
-size_flags_vertical = 8
-theme_override_constants/margin_bottom = 50
-
-[node name="answer text" type="Label" parent="correct answer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 115)
-layout_mode = 2
-size_flags_vertical = 1
-text = "1200"
-label_settings = SubResource("LabelSettings_26idk")
-horizontal_alignment = 1
-autowrap_mode = 3
-
 [node name="Question" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(359.12, 519)
@@ -333,5 +307,51 @@ offset_bottom = 952.0
 theme = ExtResource("5_5ea35")
 theme_override_font_sizes/font_size = 50
 text = "Show answer"
+
+[node name="input container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.291
+anchor_top = 0.693
+anchor_right = 0.709
+anchor_bottom = 1.143
+offset_left = 0.10386658
+offset_top = 112.24957
+offset_right = -0.10354614
+offset_bottom = 111.899414
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 200
+
+[node name="player answer text" type="Label" parent="input container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 115)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1200"
+label_settings = SubResource("LabelSettings_msloe")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="correct answer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 857.2
+offset_right = 713.2
+offset_bottom = 1022.2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 50
+
+[node name="answer text" type="Label" parent="correct answer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 115)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1200"
+label_settings = SubResource("LabelSettings_msloe")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="show answer btn" to="." method="_on_show_answer_btn_pressed"]
