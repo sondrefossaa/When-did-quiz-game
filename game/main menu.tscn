@@ -164,4 +164,5 @@ text = "Get more questions(ad)"
 [connection signal="pressed" from="VBoxContainer/competitive button" to="." method="_on_competitive_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/multiple choice" to="." method="_on_multiple_choice_pressed"]
 [connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Timeline" to="." method="_on_timeline_pressed"]
 [connection signal="pressed" from="VBoxContainer/Last q margin/Get more questions" to="." method="_on_get_more_questions_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfkj408orlm4r"]
+[gd_scene load_steps=16 format=3 uid="uid://dfkj408orlm4r"]
 
 [ext_resource type="Script" uid="uid://devmn4nt3txfc" path="res://scenes/timeline/timeline.gd" id="1_jxg8b"]
 [ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="1_likvl"]
 [ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="2_6dfq3"]
+[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_ak2ly"]
 [ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="3_jxg8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2ly"]
@@ -10,6 +11,154 @@ size = Vector2(706.66675, 1020)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuw10"]
 size = Vector2(2682.5, 1052.5)
+
+[sub_resource type="Animation" id="Animation_ak2ly"]
+resource_name = "wrong answer"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.14, 0.27333334, 0.3, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1), Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1), Color(0.82330114, 0.045717567, 5.7756904e-07, 1), Color(0.48426712, 0.014723883, 9.62615e-08, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cuw10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6955031, 0.6955032, 0.6955029, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vuipj"]
+_data = {
+&"RESET": SubResource("Animation_cuw10"),
+&"wrong answer": SubResource("Animation_ak2ly")
+}
+
+[sub_resource type="Theme" id="Theme_ak2ly"]
+Label/font_sizes/font_size = 50
+
+[sub_resource type="Animation" id="Animation_th0jy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_g6gdn"]
+resource_name = "score added"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.495, 0.495), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gx74p"]
+resource_name = "score added start"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.04750033, -0.8591746, 0.3408671, -0.052499652, 0.08061385, 0, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.014166995, -0.826332, 0.33788142, -0.05071062, 0.08359954, 0, 0),
+"times": PackedFloat32Array(0, 1.498211)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gx74p"]
+_data = {
+&"RESET": SubResource("Animation_th0jy"),
+&"score added": SubResource("Animation_g6gdn"),
+&"score added start": SubResource("Animation_gx74p")
+}
 
 [node name="timeline" type="Control"]
 layout_mode = 3
@@ -19,6 +168,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jxg8b")
+
+[node name="Bg" parent="." instance=ExtResource("2_ak2ly")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="category theme manager" parent="." instance=ExtResource("2_6dfq3")]
 
@@ -90,34 +243,33 @@ offset_left = -339.10004
 offset_top = -493.6001
 offset_right = 379.09998
 offset_bottom = 533.59985
+grow_horizontal = 1
+grow_vertical = 1
 question_generator = NodePath("../../question generator")
 category_theme_manager = NodePath("../../category theme manager")
 
-[node name="Card3" parent="timeline cards" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -339.10004
-offset_top = -493.6001
-offset_right = 379.09998
-offset_bottom = 533.59985
-question_generator = NodePath("../../question generator")
-category_theme_manager = NodePath("../../category theme manager")
+[node name="wrong answer anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vuipj")
+}
 
-[node name="Card4" parent="timeline cards" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
+[node name="Score value" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -339.10004
-offset_top = -493.6001
-offset_right = 379.09998
-offset_bottom = 533.59985
-question_generator = NodePath("../../question generator")
-category_theme_manager = NodePath("../../category theme manager")
+offset_left = 538.0
+offset_top = 178.0
+offset_right = 1258.9999
+offset_bottom = 247.79169
+pivot_offset = Vector2(360.5, 34.896)
+size_flags_horizontal = 3
+theme = SubResource("Theme_ak2ly")
+text = "0"
+horizontal_alignment = 1
+
+[node name="score add anim" type="AnimationPlayer" parent="Score value"]
+libraries = {
+&"": SubResource("AnimationLibrary_gx74p")
+}
 
 [connection signal="area_entered" from="card drop area" to="." method="_on_card_drop_area_area_entered"]
 [connection signal="area_exited" from="card drop area" to="." method="_on_card_drop_area_area_exited"]

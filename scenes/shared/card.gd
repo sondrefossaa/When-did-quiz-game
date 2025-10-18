@@ -18,6 +18,7 @@ var category = ""
 
 const SHOW_ANSWER_DEF = "Show answer"
 func _ready():
+	show_answer_btn.pressed.connect(reveal_answer)
 	if question_generator and generate_question:
 		get_new_question()
 	if not casual:
@@ -39,10 +40,6 @@ func update_bg_color(newcolor):
 	var new_stylebox = CARD_BG_DEFAULT.duplicate()
 	new_stylebox.bg_color = newcolor
 	card_bg.add_theme_stylebox_override("panel", new_stylebox)
-
-func _on_show_answer_btn_pressed():
+func reveal_answer():
 	if show_answer_btn:
 		show_answer_btn.text = current_question.answer
-		#current_question = question_generator.create_question()
-		#update_question_text(current_question.question)
-		#update_bg_color(category_theme_manager.category_color[current_question.category])

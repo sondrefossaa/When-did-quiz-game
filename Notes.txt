@@ -1,3 +1,8 @@
 make score animation smoother
 make timeline mode
 dont use hbox for timeline
+
+		var new_card = card.duplicate()
+		new_card.scale = Vector2(1,1)
+		timeline_cards.add_child(new_card)
+		timeline_cards.move_child(new_card, index)

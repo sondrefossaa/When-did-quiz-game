@@ -3,6 +3,7 @@ const CASUAL_CARD = preload("res://scenes/casual card/casual.tscn")
 const SINGLE_CATEGORY_CARD = preload("res://scenes/single category card/single category card.tscn")
 const MAIN = preload("uid://cn8psqd4pyn2m")
 const MULTIPLE_CATEGORY_CARD = preload("uid://61iig0uvkhe1")
+const TIMELINE = preload("uid://dfkj408orlm4r")
 
 @onready var admob = $Admob
 var is_initialized := false
@@ -28,6 +29,9 @@ func _on_get_more_questions_pressed():
 		await  admob.rewarded_ad_loaded
 		admob.show_rewarded_ad()
  
+func _on_timeline_pressed():
+	get_tree().change_scene_to_packed(TIMELINE)
+
 func _on_admob_initialization_completed(status_data):
 	is_initialized = true
 

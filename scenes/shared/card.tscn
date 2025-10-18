@@ -172,5 +172,3 @@ offset_bottom = 952.0
 theme = ExtResource("5_5ea35")
 theme_override_font_sizes/font_size = 50
 text = "Show answer"
-
-[connection signal="pressed" from="show answer btn" to="." method="_on_show_answer_btn_pressed"]
