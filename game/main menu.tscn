@@ -154,9 +154,16 @@ text = "Timeline"
 
 [node name="Last q margin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 50
 
-[node name="Get more questions" type="Button" parent="VBoxContainer/Last q margin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Last q margin"]
+layout_mode = 2
+
+[node name="high score" type="Button" parent="VBoxContainer/Last q margin/VBoxContainer"]
+layout_mode = 2
+text = "High scores"
+
+[node name="Get more questions" type="Button" parent="VBoxContainer/Last q margin/VBoxContainer"]
 layout_mode = 2
 text = "Get more questions(ad)"
 
@@ -165,4 +172,5 @@ text = "Get more questions(ad)"
 [connection signal="pressed" from="VBoxContainer/multiple choice" to="." method="_on_multiple_choice_pressed"]
 [connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Timeline" to="." method="_on_timeline_pressed"]
-[connection signal="pressed" from="VBoxContainer/Last q margin/Get more questions" to="." method="_on_get_more_questions_pressed"]
+[connection signal="pressed" from="VBoxContainer/Last q margin/VBoxContainer/high score" to="." method="_on_high_score_pressed"]
+[connection signal="pressed" from="VBoxContainer/Last q margin/VBoxContainer/Get more questions" to="." method="_on_get_more_questions_pressed"]

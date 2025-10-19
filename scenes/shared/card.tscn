@@ -164,11 +164,32 @@ texture = ExtResource("2_ar6ke")
 one_shot = true
 
 [node name="show answer btn" type="Button" parent="."]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 681.0
-offset_right = 524.0
-offset_bottom = 952.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -378.71997
+offset_right = 191.99997
+offset_bottom = -107.71997
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("5_5ea35")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 text = "Show answer"
+
+[node name="category display margin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0002136
+offset_top = -264.0
+offset_right = 713.2002
+offset_bottom = 753.19995
+
+[node name="category display" type="Label" parent="category display margin"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Category"
+horizontal_alignment = 1

@@ -9,6 +9,7 @@ extends Control
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
 @onready var show_answer_btn = $"show answer btn"
 @onready var border_timer_texture = %BorderTimerTexture
+@onready var category_display = $"category display margin/category display"
 
 # To prevent generating a new question when animating new card in single category card
 var generate_question = true
@@ -22,12 +23,14 @@ func _ready():
 	if question_generator and generate_question:
 		get_new_question()
 	if not casual:
+		category_display.visible = false
 		show_answer_btn.visible = false
 		border_timer_texture.visible = false
 
 func get_new_question():
 	current_question = question_generator.create_question()
 	category = current_question.category
+	category_display.text = category[0].to_upper() + category.substr(1)
 	update_question_text(current_question.question)
 	update_bg_color(category_theme_manager.category_color[current_question.category])
 func update_question_text(new_question : String):

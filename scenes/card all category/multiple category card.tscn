@@ -210,7 +210,7 @@ _data = {
 &"score added start": SubResource("Animation_gx74p")
 }
 
-[node name="Multiple category card" type="Control"]
+[node name="multiple choice" type="Control"]
 layout_mode = 3
 anchor_left = 0.011
 anchor_right = 0.676

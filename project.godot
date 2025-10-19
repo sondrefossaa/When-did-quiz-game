@@ -12,6 +12,8 @@ config_version=5
 
 config/name="when did card game"
 run/main_scene="uid://calwfewnvjycf"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="user"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -30,6 +32,17 @@ window/vsync/vsync_mode=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AdmobPlugin/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "orange",
+"res://android/": "green",
+"res://game/": "gray",
+"res://questions/": "gray",
+"res://scenes/": "purple",
+"res://visual/": "pink"
+}
 
 [gui]
 

@@ -7,6 +7,7 @@ extends Control
 @onready var orgin_pos = card.global_position
 @onready var score_value = %"Score value"
 @onready var score_add_anim = $"Score value/score add anim"
+const TIMELINE_SCENE = preload("uid://dfkj408orlm4r")
 var cards_scale = 0.6
 var timeline_card_orgin : Vector2
 var hovering := false
@@ -70,9 +71,8 @@ func _process(_delta):
 		card.get_new_question()
 		hover_over = false
 		if not is_valid_insertion(new_card, index):
-			wrong_answer_anim.play("wrong answer")
-			await wrong_answer_anim.animation_finished
-			get_tree().reload_current_scene()
+			var base_scene = get_parent()
+			base_scene.play_fail(score_value.text.to_int())
 		else:
 			var score = score_value.text.to_int()
 			score_add_anim.play("score added start")
