@@ -12,7 +12,7 @@ var high_scores = {
 
 func _ready():
 	load_data()
-	
+
 @warning_ignore("unused_signal")
 signal theme_changed(category_name, category_color)
 @warning_ignore("unused_signal")
@@ -38,7 +38,7 @@ func load_data():
 		high_scores = {
 		"single category" : 0,
 		"multiple choice" : 0,
-		"timeline" : 0
+		"timeline" : 1
 		}
 	
 func change_scene_with_base(new_scene, orgin_scene):
