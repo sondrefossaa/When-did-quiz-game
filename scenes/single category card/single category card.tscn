@@ -494,6 +494,16 @@ label_settings = SubResource("LabelSettings_kseaw")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="cards count" type="Label" parent="Card"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 78.0
+offset_bottom = 154.58333
+theme_override_font_sizes/font_size = 80
+text = "1"
+horizontal_alignment = 1
+
 [node name="Category display" type="Label" parent="."]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 1

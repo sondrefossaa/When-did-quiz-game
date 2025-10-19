@@ -180,6 +180,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_gx74p"]
 resource_name = "score added start"
+length = 1.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -188,8 +189,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.04750033, -0.8591746, 0.086, -0.052499652, 0.08061385, 0, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(1, -0.25, 0, 0.04750033, -0.8591746, 0.3408671, -0.052499652, 0.08061385, 0, 0),
+"times": PackedFloat32Array(0, 1.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -199,8 +200,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.014166995, -0.826332, 0.086, -0.05071062, 0.08359954, 0, 0),
-"times": PackedFloat32Array(0, 0.998211)
+"points": PackedFloat32Array(1, -0.25, 0, 0.014166995, -0.826332, 0.33788142, -0.05071062, 0.08359954, 0, 0),
+"times": PackedFloat32Array(0, 1.498211)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gx74p"]
@@ -483,14 +484,22 @@ script = ExtResource("6_bvk0x")
 
 [node name="Score value" type="Label" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = -192.0
-offset_right = 720.9999
-offset_bottom = -52.41667
-pivot_offset = Vector2(360.5, 34.896)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.1
+offset_top = -845.6
+offset_right = 361.89987
+offset_bottom = -566.4333
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(376.5, 139.68744)
 size_flags_horizontal = 3
 theme = SubResource("Theme_im5jp")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 200
 text = "0"
 horizontal_alignment = 1
 
@@ -498,6 +507,18 @@ horizontal_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_gx74p")
 }
+speed_scale = 3.0
+
+[node name="cards count" type="Label" parent="."]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 155.58333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "1"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="new answer timer" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" method="_on_new_answer_timer_timeout"]
 [connection signal="new_question" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" to="." method="_on_answer_buttons_new_question"]

@@ -1,137 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://duuj82wjn50hv"]
+[gd_scene load_steps=8 format=3 uid="uid://duuj82wjn50hv"]
 
 [ext_resource type="Script" uid="uid://dfvymtq81b45y" path="res://scenes/shared/base_scene.gd" id="1_smjjl"]
-
-[sub_resource type="Theme" id="Theme_quxnp"]
-Button/font_sizes/font_size = 30
-
-[sub_resource type="Animation" id="Animation_smjjl"]
-resource_name = "failed_start"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("menu container:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.072222225, 1.6666667, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("menu container:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.07777778, 1.6666667, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("failed bg:color:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.076111116, 0.09607844, 0.8, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.49)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("failed bg:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("menu container:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("score display:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("score display:scale:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.076111116, 1.6666667, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.49)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("score display:scale:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.076111116, 1.6666667, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.49)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("high score container:scale:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.08166667, 0, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.49)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("high score container:scale:y")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.08166667, 0, 10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.49)
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("high score container:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[ext_resource type="Script" uid="uid://7o2tb3rfhup1" path="res://scenes/shared/tutorial.gd" id="2_axqqa"]
 
 [sub_resource type="Animation" id="Animation_axqqa"]
 length = 0.001
@@ -261,11 +131,146 @@ tracks/10/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_smjjl"]
+resource_name = "failed_start"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("menu container:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.072222225, 1.6666667, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu container:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.07777778, 1.6666667, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("failed bg:color:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.076111116, 0.09607844, 0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.49)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("failed bg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("menu container:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("score display:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("score display:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.076111116, 1.6666667, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.49)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("score display:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.076111116, 1.6666667, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.49)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("high score container:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.08166667, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.49)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("high score container:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.08166667, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.49)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("high score container:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1h7qs"]
 _data = {
 &"RESET": SubResource("Animation_axqqa"),
 &"failed_start": SubResource("Animation_smjjl")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axqqa"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Theme" id="Theme_quxnp"]
+Button/font_sizes/font_size = 30
+Button/styles/normal = SubResource("StyleBoxFlat_axqqa")
 
 [node name="base scene" type="Control"]
 top_level = true
@@ -276,16 +281,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_smjjl")
-
-[node name="main menu button" type="Button" parent="."]
-top_level = true
-layout_mode = 0
-offset_left = 98.0
-offset_top = 78.0
-offset_right = 296.0
-offset_bottom = 128.0
-theme = SubResource("Theme_quxnp")
-text = "< Main menu"
 
 [node name="failed animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -380,5 +375,84 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Try again?"
 
-[connection signal="pressed" from="main menu button" to="." method="_on_main_menu_button_pressed"]
+[node name="tutorial" type="Control" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_axqqa")
+
+[node name="ColorRect" type="ColorRect" parent="tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tutorial title" type="Label" parent="tutorial"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 128.0
+offset_right = 103.0
+offset_bottom = 151.0
+scale = Vector2(16.400244, 16.400244)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Tutorial"
+
+[node name="Continue" type="Button" parent="tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = 346.41003
+offset_right = 39.5
+offset_bottom = 377.41003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.715, 6.715)
+pivot_offset = Vector2(39.5, 15.5)
+text = "Continue"
+
+[node name="tutorial text" type="Label" parent="tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -559.0
+offset_top = -518.0
+offset_right = 542.0
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Place cards in timeline 
+from earliest year(left)
+to latest year(right).
+You get points equal to
+ how many cards you
+can get in order.
+Good luck!"
+horizontal_alignment = 1
+
+[node name="main menu button" type="Button" parent="."]
+top_level = true
+layout_mode = 0
+offset_right = 198.0
+offset_bottom = 50.0
+scale = Vector2(1.9523587, 1.9523587)
+theme = SubResource("Theme_quxnp")
+text = "< Main menu"
+
 [connection signal="pressed" from="menu container/try again button" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="tutorial/Continue" to="tutorial" method="_on_continue_pressed"]
+[connection signal="pressed" from="main menu button" to="." method="_on_main_menu_button_pressed"]

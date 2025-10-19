@@ -36,6 +36,7 @@ func drag_cards(delta_x: float) -> void:
 
 func _ready():
 	# Set scale
+	card.get_node("show answer btn").text = ""
 	card.scale = Vector2(cards_scale, cards_scale)
 	timeline_cards.scale = Vector2(cards_scale, cards_scale)
 	score_add_anim.speed_scale = 3

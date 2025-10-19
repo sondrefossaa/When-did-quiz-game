@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dluyn"]
 
 [node name="Label" type="Label"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 514.0
+offset_bottom = 181.0
+autowrap_mode = 3
 script = ExtResource("1_psgfa")
 
 [node name="Area2D" type="Area2D" parent="."]

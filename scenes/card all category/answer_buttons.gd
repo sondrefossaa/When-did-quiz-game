@@ -5,6 +5,10 @@ signal new_question(correct)
 @onready var card = $"../../../.."
 @onready var new_answer_timer = $"../../../../new answer timer"
 @onready var card_outline = $"../../../../Panelcontainer"
+@onready var score_value = %"Score value"
+@onready var score_add_anim = $"../../../../Score value/score add anim"
+@onready var cards_count = $"../../../../cards count"
+
 var normal_panel_style = preload("res://visual/themes/multiple category card/Card panel style.tres")
 var normal_theme = preload("res://visual/themes/multiple category card/normal theme.tres")
 var button_style = preload("res://visual/themes/multiple category card/button style.tres")
@@ -45,22 +49,18 @@ func answer_chosen(correct, clicked_button):
 		else:
 			button.theme = WRONG_THEME
 	if correct:
-		%"Score value".text = str(%"Score value".text.to_int() + 1)
-		right = true
-		"""button.add_theme_color_override("font_hover_color", Color.GREEN)
-		button.add_theme_color_override("font_color", Color.GREEN)
-		button.add_theme_color_override("font_hover_pressed_color", Color.GREEN)
-		button.add_theme_color_override("font_focus_color", Color.GREEN)"""
 		normal_panel_style.border_color = Color.GREEN
-		
+		right = true
 	else:
+		score_value.text = str(score_value.text.to_int() + 1)
+		score_add_anim.play("score added start")
+		await score_add_anim.animation_finished
+		score_add_anim.play("score added")
+		if score_value.text.to_int() > 2:
+			var base_scene = get_tree().get_root().get_child(1)
+			base_scene.play_fail(cards_count.text.to_int())
 		normal_panel_style.border_color = Color.RED
 		right = false
-		#card_outline.border_color = Color.GREEN
-		"""button.add_theme_color_override("font_hover_color", Color.RED)
-		button.add_theme_color_override("font_color", Color.RED)
-		button.add_theme_color_override("font_hover_pressed_color", Color.RED)
-		button.add_theme_color_override("font_focus_color", Color.RED)"""
 	new_answer_timer.start()
 
 func _on_new_answer_timer_timeout():

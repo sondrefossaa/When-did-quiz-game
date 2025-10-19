@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4ltjt07mgwkm" path="res://scenes/shared/card.gd" id="1_ar6ke"]
 [ext_resource type="Texture2D" uid="uid://bxgbrl7tahcdw" path="res://visual/visual orgin/Question.png" id="2_ar6ke"]
-[ext_resource type="StyleBox" uid="uid://mgu6f7bglqa0" path="res://scenes/shared/card bg default.tres" id="2_k8iif"]
+[ext_resource type="StyleBox" uid="uid://mgu6f7bglqa0" path="res://visual/themes/card bg default.tres" id="2_k8iif"]
 [ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://visual/border timer texture.png" id="4_msloe"]
 [ext_resource type="Theme" uid="uid://h6r81spghghm" path="res://visual/themes/answer button.tres" id="5_5ea35"]
 

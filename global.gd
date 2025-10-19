@@ -9,7 +9,19 @@ var high_scores = {
 	"multiple choice" : 0,
 	"timeline" : 1,
 }
+var theme_colors = {
+	"science" : "#38b6ff",
+	"history" : "#ffde59",
+	"pop" : "#955fff",
+	"trivia" : "#ff3939",
+	"sport" : "#00bf63",
+}
+var shown_tutorials : Array[String] = ["casual mode"]
 
+var data = {
+	"shown_tutorials" : shown_tutorials,
+	"high_scores" : high_scores
+}
 func _ready():
 	load_data()
 
@@ -27,12 +39,15 @@ func update_high_score(type : String, score : int):
 
 func save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(high_scores)
+	file.store_var(data)
 
 func load_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
-		high_scores = file.get_var()
+		data = file.get_var()
+		shown_tutorials = data.shown_tutorials
+		high_scores = data.high_scores
+
 	else:
 		print("No data saved")
 		high_scores = {

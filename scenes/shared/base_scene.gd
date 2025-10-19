@@ -7,6 +7,7 @@ const MAIN_MENU = "uid://calwfewnvjycf"
 @onready var high_score_display = $"high score container/high score display"
 @onready var high_score_title = $"high score container/high score title"
 
+# Either timeline multiple or single category
 var type = ""
 var child_scene : PackedScene = null
 
@@ -14,7 +15,6 @@ func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file(MAIN_MENU)
 
 func _ready():
-	#print(type)
 	failed_animation.play("RESET")
 	if child_scene:
 		var child_scene_instance = child_scene.instantiate()

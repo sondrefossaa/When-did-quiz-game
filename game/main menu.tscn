@@ -59,6 +59,7 @@ metadata/_custom_type_script = "uid://ciim016mkxgj4"
 
 [node name="background" parent="." instance=ExtResource("1_xdlka")]
 layout_mode = 1
+floater_type = 0
 
 [node name="Title2" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -144,13 +145,13 @@ text = "Competitive mode"
 layout_mode = 2
 text = "Multiple choice"
 
-[node name="casual button" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Chill mode"
-
 [node name="Timeline" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Timeline"
+
+[node name="casual button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Chill mode"
 
 [node name="Last q margin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -170,7 +171,7 @@ text = "Get more questions(ad)"
 [connection signal="initialization_completed" from="Admob" to="." method="_on_admob_initialization_completed"]
 [connection signal="pressed" from="VBoxContainer/competitive button" to="." method="_on_competitive_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/multiple choice" to="." method="_on_multiple_choice_pressed"]
-[connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Timeline" to="." method="_on_timeline_pressed"]
+[connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Last q margin/VBoxContainer/high score" to="." method="_on_high_score_pressed"]
 [connection signal="pressed" from="VBoxContainer/Last q margin/VBoxContainer/Get more questions" to="." method="_on_get_more_questions_pressed"]

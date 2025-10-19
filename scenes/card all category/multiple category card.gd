@@ -1,18 +1,18 @@
 extends Control
-#@onready var question_container = $Question
-#@onready var answer_container = $Answer
+
 @onready var science_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer/Science question"
 @onready var history_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History question"
 @onready var pop_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer3/Pop question"
 @onready var trivia_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer4/Trivia question"
 @onready var sport_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer5/Sport question"
+@onready var question_generator = $"question generator"
+@onready var answers  = %"Answer Buttons".get_children()
+@onready var cards_count = $"cards count"
+@onready var score_value = %"Score value"
 
 var question_dict ={}
 var current_category = "science"
-@onready var answers  = %"Answer Buttons".get_children()
-var csv_path = "res://questions/qtest.csv"
-@onready var data = $"question generator".data
-@onready var question_generator = $"question generator"
+
 var current_question : Dictionary
 
 func _ready():
@@ -24,17 +24,13 @@ func _ready():
 	"sport" : sport_question,
 	}
 	for category in question_dict:
-		#question_dict[category].text = question_generator.create_question(category).question
 		question_dict[category].text = ""
 	current_question = question_generator.create_question(current_category)
 	question_dict[current_category].text = current_question.question
-	gen_multiple_choice("unused")
+	gen_multiple_choice()
 
 
-	
-
-
-func gen_multiple_choice(_category):
+func gen_multiple_choice():
 	var answer = current_question.answer.to_int()
 	question_dict[current_category].text = current_question.question
 	var correct_button = randi() % 4
@@ -48,5 +44,8 @@ func gen_multiple_choice(_category):
 
 func _on_answer_buttons_new_question():
 	current_category = question_dict.keys()[(question_dict.keys().find(current_category)+1)%question_dict.size()]
+	if current_category == "science":
+		cards_count.text = str(cards_count.text.to_int() + 1)
+		score_value.text = "0"
 	current_question = question_generator.create_question(current_category)
-	gen_multiple_choice("unused")
+	gen_multiple_choice()
