@@ -206,7 +206,7 @@ font_size = 60
 outline_color = Color(0.243137, 0.352941, 0.462745, 1)
 
 [sub_resource type="Theme" id="Theme_kseaw"]
-Label/font_sizes/font_size = 50
+Label/font_sizes/font_size = 60
 
 [sub_resource type="Animation" id="Animation_th0jy"]
 length = 0.001
@@ -513,6 +513,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Score text" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 102.0
 offset_top = 1049.0
@@ -524,11 +525,18 @@ text = "Score: "
 
 [node name="Score value" type="Label" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 122.0
-offset_top = 1053.0
-offset_right = 842.9999
-offset_bottom = 1122.7916
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.0
+offset_top = -161.0
+offset_right = 188.99988
+offset_bottom = -77.25
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(360.5, 34.896)
 size_flags_horizontal = 3
 theme = SubResource("Theme_kseaw")

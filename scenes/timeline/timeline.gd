@@ -7,6 +7,7 @@ extends Control
 @onready var orgin_pos = card.global_position
 @onready var score_value = %"Score value"
 @onready var score_add_anim = $"Score value/score add anim"
+var cards_scale = 0.6
 var timeline_card_orgin : Vector2
 var hovering := false
 var hover_offset := Vector2.ZERO
@@ -17,16 +18,25 @@ var drag_vel_x := 0.0
 func _input(event):
 	if event is InputEventScreenDrag:
 		if not hovering:
-			drag_vel_x = event.velocity.x
+			# TODO fix bug that allows card to get out of bounds
+			drag_vel_x = event.relative.x
 			drag_cards(event.relative.x)
 
 
 func drag_cards(delta_x: float) -> void:
 	if not (timeline_cards.get_children()[-1].global_position.x < 0 and drag_vel_x < 0):
-		if not (timeline_cards.get_children()[0].global_position.x > get_viewport_rect().size.x - card.size.x * 0.4 and drag_vel_x > 0): 
+		if not (timeline_cards.get_children()[0].global_position.x > get_viewport_rect().size.x - card.size.x * cards_scale and drag_vel_x > 0): 
 			drag_offset_x += delta_x
+		else:
+			drag_offset_x = get_viewport_rect().size.x / 2 - card.size.x * cards_scale + card.size.x * cards_scale * timeline_cards.get_children().size()/2
+	else:
+		drag_offset_x = -get_viewport_rect().size.x / 2 + card.size.x * cards_scale - card.size.x * cards_scale * timeline_cards.get_children().size()/2
+
 
 func _ready():
+	# Set scale
+	card.scale = Vector2(cards_scale, cards_scale)
+	timeline_cards.scale = Vector2(cards_scale, cards_scale)
 	score_add_anim.speed_scale = 3
 	hover_start_btn.button_down.connect(hover_start)
 	hover_start_btn.button_up.connect(hover_end)
@@ -50,7 +60,8 @@ func _process(_delta):
 		new_card.scale = Vector2(1,1)
 		timeline_cards.add_child(new_card)
 		timeline_cards.move_child(new_card, index)
-		new_card.global_position.y = timeline_card_orgin.y
+		new_card.global_position = card.global_position
+		#new_card.global_position.y = timeline_card_orgin.y
 		# Make the area not moniterable so that area_entered dosent register
 		new_card.get_node("card hover col").monitorable = false
 		new_card.current_question = card.current_question
@@ -58,7 +69,6 @@ func _process(_delta):
 		card.global_position = orgin_pos
 		card.get_new_question()
 		hover_over = false
-		print(new_card.current_question)
 		if not is_valid_insertion(new_card, index):
 			wrong_answer_anim.play("wrong answer")
 			await wrong_answer_anim.animation_finished
@@ -98,7 +108,7 @@ func _on_card_drop_area_area_exited(_area):
 
 	
 func update_card_pos():
-	var pivot = get_viewport_rect().size / 2 - Vector2(card.size.x * 0.2, 0)
+	var pivot = get_viewport_rect().size / 2 - Vector2(card.size.x * cards_scale / 2.0, 0)
 	var cards = timeline_cards.get_children()
 	if hover_over:
 		# Find index
@@ -112,7 +122,8 @@ func update_card_pos():
 
 	var i = 0
 	for timeline_card in cards:
-		timeline_card.global_position.x = pivot.x + (pos_offset_array[i] * timeline_card.size.x * 0.4) + drag_offset_x
+		timeline_card.global_position.x = lerp(timeline_card.global_position.x, pivot.x + (pos_offset_array[i] * timeline_card.size.x * cards_scale) + drag_offset_x, 0.1)
+		timeline_card.global_position.y = lerp(timeline_card.global_position.y, timeline_card_orgin.y, 0.1)
 		i += 1
 
 func find_index(x_pos):
