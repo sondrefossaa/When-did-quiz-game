@@ -1,8 +1,6 @@
 extends Node
-class_name questionGenerator
 
-# Moved to global
-#signal question_created(category : String)
+signal question_generated(category)
 var csv_path = "res://questions/qtest.csv"
 
 # Load custom resource
@@ -14,7 +12,7 @@ var correct_answer : String
 # Limit question count to prevent csv "wrapping"
 var question_count := 131
 
-func create_question(category = "random"):
+func create_question(category = "random", will_change_theme = true):
 	if category == "random":
 		category = categories.pick_random()
 	
@@ -25,7 +23,8 @@ func create_question(category = "random"):
 	var question = data[row][col]
 
 	correct_answer = data[row][col+1]
-
-	Global.question_generated.emit(category)
+	
+	if will_change_theme:
+		question_generated.emit(category)
 
 	return {"question": question, "answer": correct_answer, "category" : category}

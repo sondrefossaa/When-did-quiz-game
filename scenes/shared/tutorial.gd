@@ -41,7 +41,7 @@ var tutorials = {
 }
 func _ready():
 	if base_scene.gameplay_mode not in Global.shown_tutorials and base_scene.gameplay_mode in tutorials:
-		Global.theme_changed.connect(change_tutorial_color)
+		CategoryThemeManager.theme_changed.connect(change_tutorial_color)
 		tutorial_text.text = tutorials[base_scene.gameplay_mode]
 		self.visible = true
 		Global.shown_tutorials.append(base_scene.gameplay_mode)

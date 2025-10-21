@@ -3,7 +3,6 @@ extends Label
 
 var speed = 1.0
 var direction : Vector2 = Vector2(1, 1)
-var rotation_speed = 0
 var color = "#38b6ff"
 var font_size = 10
 var def_font = 180
@@ -14,7 +13,6 @@ func _ready():
 
 func _process(delta):
 	position += speed * direction * delta * 60
-	rotation += deg_to_rad(rotation_speed)
 	color_offset_by_size()
 	add_theme_color_override("font_color", color)
 	add_theme_font_size_override("font_size", font_size)

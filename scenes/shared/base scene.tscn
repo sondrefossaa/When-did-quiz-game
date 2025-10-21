@@ -314,6 +314,7 @@ libraries = {
 }
 
 [node name="failed bg" type="ColorRect" parent="."]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -402,6 +403,7 @@ layout_mode = 2
 text = "Try again?"
 
 [node name="tutorial" type="Control" parent="."]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -514,3 +516,5 @@ text = "< Main menu"
 [connection signal="pressed" from="menu container/try again button" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="tutorial/continue button" to="tutorial" method="_on_continue_pressed"]
 [connection signal="pressed" from="main menu button" to="." method="_on_main_menu_button_pressed"]
+
+[editable path="screen transition anim"]

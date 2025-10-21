@@ -1,7 +1,5 @@
 extends Control
 
-@export var question_generator : questionGenerator = null
-@export var category_theme_manager : categoryThemeManager = null
 @export var casual = true
 
 @onready var question_text = $"Card bg/MarginContainer/Question text"
@@ -20,7 +18,7 @@ var category = ""
 const SHOW_ANSWER_DEF = "Show answer"
 func _ready():
 	show_answer_btn.pressed.connect(reveal_answer)
-	if question_generator and generate_question:
+	if generate_question:
 		get_new_question()
 	if not casual:
 		category_display.visible = false
@@ -28,11 +26,11 @@ func _ready():
 		border_timer_texture.visible = false
 
 func get_new_question():
-	current_question = question_generator.create_question()
+	current_question = QuestionGenerator.create_question()
 	category = current_question.category
 	category_display.text = category[0].to_upper() + category.substr(1)
 	update_question_text(current_question.question)
-	update_bg_color(category_theme_manager.category_color[current_question.category])
+	update_bg_color(CategoryThemeManager.category_colors[current_question.category])
 func update_question_text(new_question : String):
 	question_text.text = new_question
 

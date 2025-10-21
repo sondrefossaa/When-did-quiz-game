@@ -29,7 +29,6 @@ window/size/viewport_width=1080
 window/size/viewport_height=2400
 window/stretch/mode="viewport"
 window/handheld/orientation=1
-window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -38,10 +37,11 @@ enabled=PackedStringArray("res://addons/AdmobPlugin/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://Global/": "teal",
 "res://addons/": "orange",
 "res://android/": "green",
 "res://game/": "gray",
-"res://questions/": "gray",
+"res://questions/": "teal",
 "res://scenes/": "purple",
 "res://visual/": "pink"
 }

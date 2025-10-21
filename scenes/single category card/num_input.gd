@@ -1,14 +1,12 @@
 extends PanelContainer
 @onready var card = $"../Card"
 
-@onready var question_generator = $"../question generator"
 @onready var score_value = %"Score value"
 @onready var answer_input = %"player answer text"
 
 
 @onready var back_button = $"Number input/Row4/back button"
 @onready var confirm_button = $"Number input/Row4/confirm button"
-@onready var category_theme_manager = $"../category theme manager"
 @onready var single_category_card = $".."
 
 @export var numpad : Array[Button]

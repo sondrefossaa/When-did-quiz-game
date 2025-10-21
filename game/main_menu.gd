@@ -22,6 +22,8 @@ func transition_scene_with_anim(scene_type):
 	screen_transition_anim.play("screen transition")
 	await  screen_transition_anim.animation_finished
 	Global.change_scene_with_base(scene_type, self, animation_transition_custom_pos)
+
+
 func _on_competitive_button_pressed():
 	transition_scene_with_anim(SINGLE_CATEGORY_CARD)
 	

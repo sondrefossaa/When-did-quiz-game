@@ -1,5 +1,5 @@
 extends Control
-@onready var question_generator = $"question generator"
+
 @onready var cards_container = $"cards container"
 @onready var cards = cards_container.get_children()
 const CARD = preload("uid://fi246xsplije")

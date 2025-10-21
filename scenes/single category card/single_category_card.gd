@@ -9,9 +9,6 @@ extends Control
 @onready var question_timer = %"question timer"
 @onready var cards_count = $"Card/cards count"
 
-@onready var question_generator = %"question generator"
-@onready var category_theme_manager = %"category theme manager"
-
 @onready var timer_border_indicator = %"timer border indicator"
 @onready var score_value = %"Score value"
 @onready var category_display = $"Category display"
@@ -31,7 +28,7 @@ var temp_score = ""
 func _ready():
 	player_answer_input.text = ""
 	answer_text.text = ""
-	Global.question_generated.connect(update_category_title)
+	QuestionGenerator.question_generated.connect(update_category_title)
 	update_category_title(card.category)
 func _process(_delta):
 	if not question_timer.paused:
@@ -92,7 +89,7 @@ func animate_card_exit(temp_card):
 	temp_card.generate_question = false
 	var temp_anim : AnimationPlayer = temp_card.get_node("score anim")
 	var new_stylebox = CARD_BG_DEFAULT.duplicate()
-	new_stylebox.bg_color = category_theme_manager.current_color
+	new_stylebox.bg_color = CategoryThemeManager.current_color
 	temp_card.get_node("Card bg").add_theme_stylebox_override("panel", new_stylebox)
 	#new_stylebox.bg_color = category_theme_manager.current_color
 	

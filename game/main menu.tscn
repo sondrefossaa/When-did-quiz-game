@@ -487,7 +487,7 @@ theme_override_constants/margin_top = 80
 
 [node name="Get more questions" type="Button" parent="VBoxContainer/Last q margin"]
 layout_mode = 2
-text = "Get more questions(ad)"
+text = "Support me (ad)"
 
 [node name="screen transition anim" parent="." instance=ExtResource("4_n7s1h")]
 

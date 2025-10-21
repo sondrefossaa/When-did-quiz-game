@@ -33,7 +33,7 @@ func _ready():
 func update_color():
 	normal_panel_style.border_color = Color.BLACK
 	for button in buttons:
-		var new_color = Color(Global.theme_colors[card.current_category])
+		var new_color = Color(CategoryThemeManager.category_colors[card.current_category])
 		button.add_theme_color_override("font_hover_color", new_color)
 		button.add_theme_color_override("font_color", new_color)
 		button.add_theme_color_override("font_hover_pressed_color", new_color)

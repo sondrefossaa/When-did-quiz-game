@@ -17,17 +17,18 @@ var played_transition = false
 var change_to_main_menu = false
 var main_menu_instance = null
 func _ready():
-	if animation_transition_custom_pos != Vector2.ZERO:
-		$"screen transition anim/transition_circle".global_position = animation_transition_custom_pos
-		screen_transition_anim.play("scene transition reverse")
-		screen_transition_anim.queue("RESET")
-	failed_animation.play("RESET")
 	if child_scene:
 		var child_scene_instance = child_scene.instantiate()
 		add_child(child_scene_instance)
+	failed_animation.play("RESET")
+	if animation_transition_custom_pos != Vector2.ZERO:
+		$"screen transition anim/transition_circle".global_position = animation_transition_custom_pos
+		screen_transition_anim.play("scene transition reverse")
+		await screen_transition_anim.animation_finished
+		$"screen transition anim/transition_circle".visible = false
+
 
 func play_fail(score):
-	# TODO add prev highscore
 	var prev_high_score = Global.high_scores[gameplay_mode]
 	var is_high_score = Global.update_high_score(gameplay_mode, score)
 	high_score_display.text = str(Global.high_scores[gameplay_mode])
@@ -58,7 +59,7 @@ func _on_main_menu_button_pressed():
 	#get_tree().change_scene_to_file(MAIN_MENU)
 
 func _process(delta):
-	var movement = 10
+	var movement = 5
 	if change_to_main_menu:
 		main_menu_instance.global_position.x = lerp(main_menu_instance.global_position.x, 0.0, movement * delta)
 		global_position.x = lerp(global_position.x, get_viewport_rect().size.x, movement * delta)

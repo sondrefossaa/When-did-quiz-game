@@ -6,7 +6,6 @@ extends Control
 @onready var trivia_question = $"Card panel/card body/VBoxContainer2/MarginContainer4/Trivia question"
 @onready var sport_question = $"Card panel/card body/VBoxContainer2/MarginContainer5/Sport question"
 
-@onready var question_generator = $"question generator"
 @onready var answers = %"Answer Buttons".get_children()
 @onready var cards_count = $"cards count"
 @onready var score_value = %"Score value"
@@ -27,7 +26,7 @@ func _ready():
 	}
 	for category in question_dict:
 		question_dict[category].text = ""
-	current_question = question_generator.create_question(current_category)
+	current_question = QuestionGenerator.create_question(current_category)
 	question_dict[current_category].text = current_question.question
 	gen_multiple_choice()
 
@@ -52,5 +51,5 @@ func _on_answer_buttons_new_question():
 	if current_category == "science":
 		cards_count.text = str(cards_count.text.to_int() + 1)
 		score_value.text = "0"
-	current_question = question_generator.create_question(current_category)
+	current_question = QuestionGenerator.create_question(current_category)
 	gen_multiple_choice()

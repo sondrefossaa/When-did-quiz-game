@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbdm37u6b6a4k"]
+[gd_scene load_steps=3 format=3 uid="uid://cbdm37u6b6a4k"]
 
 [ext_resource type="Script" uid="uid://mntx5nefdify" path="res://visual/background/background.gd" id="1_n5ngf"]
-[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://Global/question_generator.tscn" id="2_ufka7"]
 
 [sub_resource type="GDScript" id="GDScript_ufka7"]
 script/source = "extends SubViewportContainer
@@ -15,7 +14,7 @@ enum FLOATER_TYPES {QUESTION, YEAR}
 
 func _ready():
 	if random_theme:
-		background.change_theme(\"\", Global.theme_colors.values().pick_random())
+		background.change_theme(\"\", CategoryThemeManager.category_colors.values().pick_random())
 "
 
 [node name="backgound viewport" type="SubViewportContainer"]
@@ -56,5 +55,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="question generator" parent="SubViewport/background" instance=ExtResource("2_ufka7")]

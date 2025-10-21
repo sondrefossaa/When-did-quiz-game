@@ -9,13 +9,7 @@ var high_scores = {
 	"multiple choice" : 0,
 	"timeline" : 1,
 }
-var theme_colors = {
-	"science" : "#38b6ff",
-	"history" : "#ffde59",
-	"pop" : "#955fff",
-	"trivia" : "#ff3939",
-	"sport" : "#00bf63",
-}
+
 var shown_tutorials : Array[String] = []
 
 var data = {
@@ -24,11 +18,6 @@ var data = {
 }
 func _ready():
 	load_data()
-
-@warning_ignore("unused_signal")
-signal theme_changed(category_name, category_color)
-@warning_ignore("unused_signal")
-signal question_generated(category)
 
 func update_high_score(type : String, score : int):
 	if score > high_scores[type]:

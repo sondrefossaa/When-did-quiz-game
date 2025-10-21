@@ -1,11 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://wpdbirqprwk5"]
+[gd_scene load_steps=33 format=3 uid="uid://wpdbirqprwk5"]
 
 [ext_resource type="Texture2D" uid="uid://qd23y8n6kfcq" path="res://visual/border timer texture.png" id="1_kseaw"]
 [ext_resource type="Script" uid="uid://i7xuqgkag2ci" path="res://scenes/single category card/single_category_card.gd" id="1_yq817"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_15qw2"]
 [ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="5_yp3v6"]
-[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://Global/theme_manager.tscn" id="6_26idk"]
-[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://Global/question_generator.tscn" id="6_yp3v6"]
 [ext_resource type="Script" uid="uid://1adkla0jegv6" path="res://scenes/single category card/num_input.gd" id="7_yp3v6"]
 [ext_resource type="Theme" uid="uid://c8g43ggknf01x" path="res://visual/themes/single category card/Calculator button theme.tres" id="8_15qw2"]
 
@@ -427,17 +425,9 @@ unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
 
-[node name="category theme manager" parent="." instance=ExtResource("6_26idk")]
-unique_name_in_owner = true
-
-[node name="question generator" parent="." instance=ExtResource("6_yp3v6")]
-unique_name_in_owner = true
-
-[node name="Card" parent="." node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("5_yp3v6")]
+[node name="Card" parent="." instance=ExtResource("5_yp3v6")]
 layout_mode = 1
 offset_right = -11.880005
-question_generator = NodePath("../question generator")
-category_theme_manager = NodePath("../category theme manager")
 casual = false
 
 [node name="score anim" type="AnimationPlayer" parent="Card"]
