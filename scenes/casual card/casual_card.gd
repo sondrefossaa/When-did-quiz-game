@@ -28,7 +28,6 @@ func drag_cards(delta_x: float) -> void:
 		if not card.is_queued_for_deletion():
 			card.position.x = round(card.position.x + delta_x)
 		if abs(card.position.x) > 20000:
-			print("a")
 			card.queue_free()
 	speed = delta_x / get_process_delta_time()
 
