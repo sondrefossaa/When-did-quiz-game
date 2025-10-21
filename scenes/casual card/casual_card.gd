@@ -22,10 +22,16 @@ func _input(event):
 	else:
 		dragging = false
 
+
 func drag_cards(delta_x: float) -> void:
-	for card in cards:
-		card.position.x += delta_x
+	for card in cards_container.get_children():
+		if not card.is_queued_for_deletion():
+			card.position.x = round(card.position.x + delta_x)
+		if abs(card.position.x) > 20000:
+			print("a")
+			card.queue_free()
 	speed = delta_x / get_process_delta_time()
+
 func _ready():
 	pass
 	# Make competitive specific featur invisible
@@ -43,17 +49,17 @@ func _process(delta):
 		
 	if max_min.max.global_position.x < screen_width:
 		spawn_new_card("end", max_min.max.global_position.x)
-	
+
 func spawn_new_card(pos: String, card_pos) -> void:
 	var temp_card := cards[0].duplicate() as Control
 	cards_container.add_child(temp_card)
 	match pos:
 		# Spawn at end
 		"end":
-			temp_card.global_position = Vector2(card_pos+CARD_WIDTH+card_margin, 428)
+			temp_card.global_position = Vector2(card_pos+CARD_WIDTH+card_margin, cards_container.global_position.y)
 		# Spawn at start
 		"start":
-			temp_card.global_position = Vector2(card_pos-CARD_WIDTH-card_margin, 428)
+			temp_card.global_position = Vector2(card_pos-CARD_WIDTH-card_margin, cards_container.global_position.y)
 		_:
 			push_warning("spawn_new_card: Unknown position '%s'" % pos)
 	cards = cards_container.get_children()

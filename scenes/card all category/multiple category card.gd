@@ -1,14 +1,16 @@
 extends Control
 
-@onready var science_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer/Science question"
-@onready var history_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History question"
-@onready var pop_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer3/Pop question"
-@onready var trivia_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer4/Trivia question"
-@onready var sport_question = $"Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer5/Sport question"
+@onready var science_question = $"Card panel/card body/VBoxContainer2/MarginContainer/Science question"
+@onready var history_question = $"Card panel/card body/VBoxContainer2/MarginContainer2/History question"
+@onready var pop_question = $"Card panel/card body/VBoxContainer2/MarginContainer3/Pop question"
+@onready var trivia_question = $"Card panel/card body/VBoxContainer2/MarginContainer4/Trivia question"
+@onready var sport_question = $"Card panel/card body/VBoxContainer2/MarginContainer5/Sport question"
+
 @onready var question_generator = $"question generator"
-@onready var answers  = %"Answer Buttons".get_children()
+@onready var answers = %"Answer Buttons".get_children()
 @onready var cards_count = $"cards count"
 @onready var score_value = %"Score value"
+const NORMAL_THEME = preload("uid://cdhu03nh24i37")
 
 var question_dict ={}
 var current_category = "science"
@@ -40,8 +42,11 @@ func gen_multiple_choice():
 			answers[i].correct = true
 			answers[i].text = current_question.answer
 		else:
-			answers[i].text = str(randi_range(answer-100, answer+100))
-
+			if "BC" in current_question.answer:
+				answers[i].text = str(randi_range(answer-100, answer+100)) + " BC"
+			else:
+				answers[i].text = str(randi_range(answer-100, answer+100))
+		answers[i].add_theme_font_size_override("font_size", 50 - 5 *(len(answers[i].text)-5))
 func _on_answer_buttons_new_question():
 	current_category = question_dict.keys()[(question_dict.keys().find(current_category)+1)%question_dict.size()]
 	if current_category == "science":

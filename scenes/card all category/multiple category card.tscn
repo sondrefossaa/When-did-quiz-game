@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://by0n24lqoatqf" path="res://scenes/card all category/answer_buttons.gd" id="4_tlj86"]
 [ext_resource type="Theme" uid="uid://cdhu03nh24i37" path="res://visual/themes/multiple category card/normal theme.tres" id="5_mj7rh"]
 [ext_resource type="Script" uid="uid://cyewhsek74mjb" path="res://scenes/card all category/button.gd" id="6_bvk0x"]
-[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="7_lfjv7"]
-[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="8_im5jp"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://Global/question_generator.tscn" id="7_lfjv7"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://Global/theme_manager.tscn" id="8_im5jp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wvsy"]
 bg_color = Color(1, 1, 1, 1)
@@ -232,7 +232,7 @@ offset_top = -439.0
 offset_right = 1694.3909
 offset_bottom = 2226.9634
 
-[node name="Panelcontainer" type="PanelContainer" parent="."]
+[node name="Card panel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -247,86 +247,86 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2wvsy")
 metadata/_edit_vertical_guides_ = [730.0, 13.0]
 metadata/_edit_horizontal_guides_ = [1027.0, 1050.0]
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panelcontainer"]
+[node name="Title" type="MarginContainer" parent="Card panel"]
 layout_mode = 2
 theme_override_constants/margin_top = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panelcontainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Card panel/Title"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panelcontainer/MarginContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Card panel/Title/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "W"
 label_settings = SubResource("LabelSettings_e484p")
 
-[node name="Label2" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "h"
 label_settings = SubResource("LabelSettings_kikvd")
 
-[node name="Label3" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "e"
 label_settings = SubResource("LabelSettings_btebs")
 
-[node name="Label4" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label4" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "n"
 label_settings = SubResource("LabelSettings_q5obu")
 
-[node name="Label5" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label5" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = " "
 label_settings = SubResource("LabelSettings_rjlel")
 
-[node name="Label6" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label6" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
 label_settings = SubResource("LabelSettings_1i5pp")
 
-[node name="Label7" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label7" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "i"
 label_settings = SubResource("LabelSettings_pjytt")
 
-[node name="Label8" type="Label" parent="Panelcontainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label8" type="Label" parent="Card panel/Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
 label_settings = SubResource("LabelSettings_rjlel")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panelcontainer"]
+[node name="card body" type="MarginContainer" parent="Card panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 125
 theme_override_constants/margin_right = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panelcontainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Card panel/card body"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panelcontainer/MarginContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Card panel/card body/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
 
-[node name="Science question" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer"]
+[node name="Science question" type="Label" parent="Card panel/card body/VBoxContainer2/MarginContainer"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 2
 text = "Alexander Flemming discover penicillin"
 label_settings = SubResource("LabelSettings_fpac0")
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer/Science question"]
+[node name="ColorRect" type="ColorRect" parent="Card panel/card body/VBoxContainer2/MarginContainer/Science question"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.05
@@ -335,18 +335,18 @@ anchor_bottom = 1.1
 offset_top = -0.399994
 color = Color(0.219608, 0.713726, 1, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panelcontainer/MarginContainer/VBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="Card panel/card body/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
 
-[node name="History question" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2"]
+[node name="History question" type="Label" parent="Card panel/card body/VBoxContainer2/MarginContainer2"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 2
 text = "Alexander Flemming discover penicillin"
 label_settings = SubResource("LabelSettings_b4rk6")
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer2/History question"]
+[node name="ColorRect" type="ColorRect" parent="Card panel/card body/VBoxContainer2/MarginContainer2/History question"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.05
@@ -354,18 +354,18 @@ anchor_right = 1.0
 anchor_bottom = 1.1
 color = Color(1, 0.870588, 0.34902, 1)
 
-[node name="MarginContainer3" type="MarginContainer" parent="Panelcontainer/MarginContainer/VBoxContainer2"]
+[node name="MarginContainer3" type="MarginContainer" parent="Card panel/card body/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
 
-[node name="Pop question" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer3"]
+[node name="Pop question" type="Label" parent="Card panel/card body/VBoxContainer2/MarginContainer3"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 2
 text = "Alexander Flemming discover penicillin"
 label_settings = SubResource("LabelSettings_6lcat")
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer3/Pop question"]
+[node name="ColorRect" type="ColorRect" parent="Card panel/card body/VBoxContainer2/MarginContainer3/Pop question"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.05
@@ -373,18 +373,18 @@ anchor_right = 1.0
 anchor_bottom = 1.1
 color = Color(0.584314, 0.372549, 1, 1)
 
-[node name="MarginContainer4" type="MarginContainer" parent="Panelcontainer/MarginContainer/VBoxContainer2"]
+[node name="MarginContainer4" type="MarginContainer" parent="Card panel/card body/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
 
-[node name="Trivia question" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer4"]
+[node name="Trivia question" type="Label" parent="Card panel/card body/VBoxContainer2/MarginContainer4"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 2
 text = "Alexander Flemming discover penicillin"
 label_settings = SubResource("LabelSettings_ut1v0")
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer4/Trivia question"]
+[node name="ColorRect" type="ColorRect" parent="Card panel/card body/VBoxContainer2/MarginContainer4/Trivia question"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.05
@@ -392,18 +392,18 @@ anchor_right = 1.0
 anchor_bottom = 1.1
 color = Color(1, 0.223529, 0.223529, 1)
 
-[node name="MarginContainer5" type="MarginContainer" parent="Panelcontainer/MarginContainer/VBoxContainer2"]
+[node name="MarginContainer5" type="MarginContainer" parent="Card panel/card body/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 60
 
-[node name="Sport question" type="Label" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer5"]
+[node name="Sport question" type="Label" parent="Card panel/card body/VBoxContainer2/MarginContainer5"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 2
 text = "Alexander Flemming discover penicillin"
 label_settings = SubResource("LabelSettings_vno60")
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="Panelcontainer/MarginContainer/VBoxContainer2/MarginContainer5/Sport question"]
+[node name="ColorRect" type="ColorRect" parent="Card panel/card body/VBoxContainer2/MarginContainer5/Sport question"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.05
@@ -417,61 +417,52 @@ position = Vector2(359.12, 519)
 texture = ExtResource("3_twxw3")
 
 [node name="new answer timer" type="Timer" parent="."]
+unique_name_in_owner = true
 one_shot = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.2
-offset_left = -63.0
-offset_top = 247.80005
-offset_right = -63.0
-offset_bottom = 247.80005
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.2, 1.2)
-theme_override_constants/margin_top = 40
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="Buttons bg" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = -155.0
+offset_top = 1372.0001
+offset_right = 563.0
+offset_bottom = 1588.0001
+scale = Vector2(1.4292053, 1.4292053)
 theme_override_styles/panel = SubResource("StyleBoxFlat_b2sko")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="Buttons margin" type="MarginContainer" parent="Buttons bg"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Answer Buttons" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="Answer Buttons" type="HBoxContainer" parent="Buttons bg/Buttons margin"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("4_tlj86")
 
-[node name="Science answer1" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/Answer Buttons"]
+[node name="Science answer1" type="Button" parent="Buttons bg/Buttons margin/Answer Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_mj7rh")
 text = "1997"
 script = ExtResource("6_bvk0x")
 
-[node name="Science answer2" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/Answer Buttons"]
+[node name="Science answer2" type="Button" parent="Buttons bg/Buttons margin/Answer Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_mj7rh")
 text = "1997"
 script = ExtResource("6_bvk0x")
 
-[node name="Science answer3" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/Answer Buttons"]
+[node name="Science answer3" type="Button" parent="Buttons bg/Buttons margin/Answer Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_mj7rh")
 text = "1997"
 script = ExtResource("6_bvk0x")
 
-[node name="Science answer4" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/Answer Buttons"]
+[node name="Science answer4" type="Button" parent="Buttons bg/Buttons margin/Answer Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_mj7rh")
@@ -504,12 +495,14 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="score add anim" type="AnimationPlayer" parent="Score value"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_gx74p")
 }
 speed_scale = 3.0
 
 [node name="cards count" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -38.0
 offset_top = 16.0
@@ -520,9 +513,9 @@ theme_override_font_sizes/font_size = 80
 text = "1"
 horizontal_alignment = 1
 
-[connection signal="timeout" from="new answer timer" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" method="_on_new_answer_timer_timeout"]
-[connection signal="new_question" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons" to="." method="_on_answer_buttons_new_question"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer1" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer1" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer2" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer2" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer3" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer3" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer4" to="MarginContainer/PanelContainer/MarginContainer/Answer Buttons/Science answer4" method="_on_pressed"]
+[connection signal="timeout" from="new answer timer" to="Buttons bg/Buttons margin/Answer Buttons" method="_on_new_answer_timer_timeout"]
+[connection signal="new_question" from="Buttons bg/Buttons margin/Answer Buttons" to="." method="_on_answer_buttons_new_question"]
+[connection signal="pressed" from="Buttons bg/Buttons margin/Answer Buttons/Science answer1" to="Buttons bg/Buttons margin/Answer Buttons/Science answer1" method="_on_pressed"]
+[connection signal="pressed" from="Buttons bg/Buttons margin/Answer Buttons/Science answer2" to="Buttons bg/Buttons margin/Answer Buttons/Science answer2" method="_on_pressed"]
+[connection signal="pressed" from="Buttons bg/Buttons margin/Answer Buttons/Science answer3" to="Buttons bg/Buttons margin/Answer Buttons/Science answer3" method="_on_pressed"]
+[connection signal="pressed" from="Buttons bg/Buttons margin/Answer Buttons/Science answer4" to="Buttons bg/Buttons margin/Answer Buttons/Science answer4" method="_on_pressed"]

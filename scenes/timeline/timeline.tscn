@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://devmn4nt3txfc" path="res://scenes/timeline/timeline.gd" id="1_jxg8b"]
 [ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="1_likvl"]
-[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://scenes/shared/theme_manager.tscn" id="2_6dfq3"]
+[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://Global/theme_manager.tscn" id="2_6dfq3"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_ak2ly"]
-[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://scenes/shared/question_generator.tscn" id="3_jxg8b"]
+[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://Global/question_generator.tscn" id="3_jxg8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2ly"]
 size = Vector2(706.66675, 1020)
@@ -171,11 +171,6 @@ script = ExtResource("1_jxg8b")
 
 [node name="Bg" parent="." instance=ExtResource("2_ak2ly")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 2592.0
 offset_bottom = 3687.0
 
@@ -185,10 +180,10 @@ offset_bottom = 3687.0
 
 [node name="card" parent="." node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_likvl")]
 layout_mode = 1
-anchor_left = -0.09145372
-anchor_top = -0.19477917
-anchor_right = -0.09145372
-anchor_bottom = -0.19477916
+anchor_left = -0.08034261
+anchor_top = -0.22477916
+anchor_right = -0.08034261
+anchor_bottom = -0.22477916
 offset_left = 472.77002
 offset_top = 2067.47
 offset_right = 1190.97

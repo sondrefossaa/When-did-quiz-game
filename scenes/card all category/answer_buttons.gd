@@ -2,18 +2,22 @@ extends HBoxContainer
 @onready var buttons = self.get_children()
 var right = false
 signal new_question(correct)
-@onready var card = $"../../../.."
-@onready var new_answer_timer = $"../../../../new answer timer"
-@onready var card_outline = $"../../../../Panelcontainer"
+
+@onready var card = $"../../.."
+@onready var new_answer_timer = %"new answer timer"
+@onready var buttons_bg = $"../.."
 @onready var score_value = %"Score value"
-@onready var score_add_anim = $"../../../../Score value/score add anim"
-@onready var cards_count = $"../../../../cards count"
+@onready var score_add_anim = %"score add anim"
+@onready var cards_count = %"cards count"
+
 
 var normal_panel_style = preload("res://visual/themes/multiple category card/Card panel style.tres")
 var normal_theme = preload("res://visual/themes/multiple category card/normal theme.tres")
 var button_style = preload("res://visual/themes/multiple category card/button style.tres")
 const WRONG_THEME = preload("res://visual/themes/multiple category card/wrong theme.tres")
 const CORRECT_THEME = preload("res://visual/themes/multiple category card/correct theme.tres")
+const NORMAL_THEME = preload("uid://cdhu03nh24i37")
+
 var question_color = {
 	"science" : "#38b6ff",
 	"history" : "#ffde59",
@@ -29,14 +33,15 @@ func _ready():
 func update_color():
 	normal_panel_style.border_color = Color.BLACK
 	for button in buttons:
-		var new_color = Color(question_color[card.current_category])
-		#button.add_theme_color_override("font_color", Color.WEB_GRAY)
+		var new_color = Color(Global.theme_colors[card.current_category])
 		button.add_theme_color_override("font_hover_color", new_color)
 		button.add_theme_color_override("font_color", new_color)
 		button.add_theme_color_override("font_hover_pressed_color", new_color)
 		button.add_theme_color_override("font_focus_color", new_color)
 
-func answer_chosen(correct, clicked_button):
+
+		
+func answer_chosen(correct):
 	var disabled_correct_stylebox := StyleBoxFlat.new()
 	disabled_correct_stylebox.bg_color = Color.GREEN
 	var disabled_wrong_stylebox := StyleBoxFlat.new()
@@ -56,7 +61,7 @@ func answer_chosen(correct, clicked_button):
 		score_add_anim.play("score added start")
 		await score_add_anim.animation_finished
 		score_add_anim.play("score added")
-		if score_value.text.to_int() > 2:
+		if score_value.text.to_int() > 3:
 			var base_scene = get_tree().get_root().get_child(1)
 			base_scene.play_fail(cards_count.text.to_int())
 		normal_panel_style.border_color = Color.RED

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://calwfewnvjycf"]
+[gd_scene load_steps=30 format=3 uid="uid://calwfewnvjycf"]
 
 [ext_resource type="Script" uid="uid://cniy4t46dvoe6" path="res://game/main_menu.gd" id="1_5n37b"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="1_xdlka"]
 [ext_resource type="Script" uid="uid://ciim016mkxgj4" path="res://addons/AdmobPlugin/Admob.gd" id="3_54k5l"]
+[ext_resource type="PackedScene" uid="uid://c4skgnmc2w281" path="res://game/screen_transition_anim.tscn" id="4_n7s1h"]
 
 [sub_resource type="SystemFont" id="SystemFont_q5obu"]
 subpixel_positioning = 0
@@ -42,7 +43,296 @@ font = SubResource("SystemFont_q5obu")
 font_size = 65
 font_color = Color(0, 0.74902, 0.388235, 1)
 
-[node name="Main Menu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54k5l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.21960784, 0.7137255, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7s1h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.87058824, 0.34901962, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onlnh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.87058824, 0.34901962, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkhuu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.87058824, 0.34901962, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r08y"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.87058824, 0.34901962, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phtxh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.87058824, 0.34901962, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytux0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.58431375, 0.37254903, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpua4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.58431375, 0.37254903, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgy7l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.58431375, 0.37254903, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj6am"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.58431375, 0.37254903, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3je72"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.58431375, 0.37254903, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3snt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.22352941, 0.22352941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrwrk"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.22352941, 0.22352941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv4jd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.22352941, 0.22352941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmat4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.22352941, 0.22352941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dlei"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.22352941, 0.22352941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27s7e"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.7490196, 0.3882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("game_mode_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,6 +340,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5n37b")
+game_mode_buttons = [NodePath("VBoxContainer/competitive button"), NodePath("VBoxContainer/multiple choice"), NodePath("VBoxContainer/Timeline"), NodePath("VBoxContainer/casual button")]
 
 [node name="Admob" type="Node" parent="."]
 script = ExtResource("3_54k5l")
@@ -59,9 +350,12 @@ metadata/_custom_type_script = "uid://ciim016mkxgj4"
 
 [node name="background" parent="." instance=ExtResource("1_xdlka")]
 layout_mode = 1
+offset_right = 2591.4
+offset_bottom = 3686.4
 floater_type = 0
+random_theme = true
 
-[node name="Title2" type="MarginContainer" parent="."]
+[node name="Title" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = -821.0
 offset_top = 261.99997
@@ -70,56 +364,56 @@ offset_bottom = 2662.0
 scale = Vector2(2.5, 2.5)
 theme_override_constants/margin_top = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Title2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Title"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Title2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "W"
 label_settings = SubResource("LabelSettings_xdlka")
 
-[node name="Label2" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "h"
 label_settings = SubResource("LabelSettings_5n37b")
 
-[node name="Label3" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "e"
 label_settings = SubResource("LabelSettings_54k5l")
 
-[node name="Label4" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label4" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "n"
 label_settings = SubResource("LabelSettings_n7s1h")
 
-[node name="Label5" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label5" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = " "
 label_settings = SubResource("LabelSettings_onlnh")
 
-[node name="Label6" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label6" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
 label_settings = SubResource("LabelSettings_nkhuu")
 
-[node name="Label7" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label7" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "i"
 label_settings = SubResource("LabelSettings_1r08y")
 
-[node name="Label8" type="Label" parent="Title2/VBoxContainer/HBoxContainer"]
+[node name="Label8" type="Label" parent="Title/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
@@ -139,39 +433,73 @@ scale = Vector2(5.2990255, 5.126993)
 
 [node name="competitive button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_54k5l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_54k5l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_54k5l")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_54k5l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_54k5l")
 text = "Competitive mode"
 
 [node name="multiple choice" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_n7s1h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_onlnh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nkhuu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1r08y")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phtxh")
 text = "Multiple choice"
 
 [node name="Timeline" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ytux0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fpua4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bgy7l")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cj6am")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3je72")
 text = "Timeline"
 
 [node name="casual button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l3snt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xrwrk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uv4jd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wmat4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1dlei")
 text = "Chill mode"
+
+[node name="high score" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_27s7e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_27s7e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27s7e")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_27s7e")
+theme_override_styles/focus = SubResource("StyleBoxFlat_27s7e")
+text = "High scores"
 
 [node name="Last q margin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Last q margin"]
-layout_mode = 2
-
-[node name="high score" type="Button" parent="VBoxContainer/Last q margin/VBoxContainer"]
-layout_mode = 2
-text = "High scores"
-
-[node name="Get more questions" type="Button" parent="VBoxContainer/Last q margin/VBoxContainer"]
+[node name="Get more questions" type="Button" parent="VBoxContainer/Last q margin"]
 layout_mode = 2
 text = "Get more questions(ad)"
+
+[node name="screen transition anim" parent="." instance=ExtResource("4_n7s1h")]
+
+[node name="transition_circle" parent="screen transition anim" index="0"]
+visible = false
 
 [connection signal="initialization_completed" from="Admob" to="." method="_on_admob_initialization_completed"]
 [connection signal="pressed" from="VBoxContainer/competitive button" to="." method="_on_competitive_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/multiple choice" to="." method="_on_multiple_choice_pressed"]
 [connection signal="pressed" from="VBoxContainer/Timeline" to="." method="_on_timeline_pressed"]
 [connection signal="pressed" from="VBoxContainer/casual button" to="." method="_on_casual_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Last q margin/VBoxContainer/high score" to="." method="_on_high_score_pressed"]
-[connection signal="pressed" from="VBoxContainer/Last q margin/VBoxContainer/Get more questions" to="." method="_on_get_more_questions_pressed"]
+[connection signal="pressed" from="VBoxContainer/high score" to="." method="_on_high_score_pressed"]
+[connection signal="pressed" from="VBoxContainer/Last q margin/Get more questions" to="." method="_on_get_more_questions_pressed"]
+
+[editable path="screen transition anim"]

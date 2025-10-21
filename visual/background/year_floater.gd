@@ -9,7 +9,7 @@ var font_size = 10
 var def_font = 180
 var can_die = false
 func _ready():
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(10.0).timeout
 	can_die = true
 
 func _process(delta):

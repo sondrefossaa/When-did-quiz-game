@@ -27,7 +27,7 @@ var multiple_category_tutorial = """Guess from four options
 when the event happened.
 You get a point for each
 wrong answer. If you get 
-less than 3 wrong, you
+less than 4 wrong, you
 advance to the next card,
 if not you fail.
 You get points equal to
@@ -40,11 +40,11 @@ var tutorials = {
 	"single category" : single_category_tutorial,
 }
 func _ready():
-	if base_scene.type not in Global.shown_tutorials and base_scene.type in tutorials:
+	if base_scene.gameplay_mode not in Global.shown_tutorials and base_scene.gameplay_mode in tutorials:
 		Global.theme_changed.connect(change_tutorial_color)
-		tutorial_text.text = tutorials[base_scene.type]
+		tutorial_text.text = tutorials[base_scene.gameplay_mode]
 		self.visible = true
-		Global.shown_tutorials.append(base_scene.type)
+		Global.shown_tutorials.append(base_scene.gameplay_mode)
 		Global.save()
 	else:
 		self.visible = false

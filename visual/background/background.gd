@@ -4,7 +4,7 @@ extends Node
 @onready var main_bg = $"main bg"
 @onready var floaters = $floaters
 @onready var question_generator = $"question generator"
-@onready var bg = $"../.."
+@onready var backgound_viewport = $"../.."
 
 const BG_FLOATER = preload("uid://3tfn7w2ooy63")
 const LABEL_FLOATER = preload("uid://c1qnak6hnx2u8")
@@ -41,14 +41,15 @@ var spawn_directions : Dictionary = {
 	}
 }
 var spawn : Dictionary = spawn_directions[spawn_directions.keys().pick_random()]
+
 func _ready():
-	if bg.floater_type == 0:
+	if backgound_viewport.floater_type == 0:
 		floater_type = "question"
-	if bg.floater_type == 1:
+	if backgound_viewport.floater_type == 1:
 		floater_type = "year"
 	Global.theme_changed.connect(change_theme)
-	for i in range(0, floaters.size.x, 500):
-		for j in range(0, floaters.size.y, 500):
+	for i in range(0, backgound_viewport.size.x, 500):
+		for j in range(0, backgound_viewport.size.y, 500):
 			var temp_floater : Label
 			if floater_type ==  "year":
 				temp_floater = make_year_floater()
@@ -59,6 +60,7 @@ func _ready():
 	spawn_floaters()
 
 func change_theme(_category_name, new_color):
+	print(2)
 	color_C = Color(new_color)
 	main_bg.color = new_color
 	for floater in floaters.get_children():
@@ -112,8 +114,8 @@ func make_question_floater():
 	temp_floater.font_size = randi_range(10, 50)
 	temp_floater.direction = direction
 	temp_floater.text = temp_question.question
-	color_C = Global.theme_colors[temp_question.category]
-	temp_floater.color = color_C.lightened(0.2)
+	#color_C = Global.theme_colors[temp_question.category]
+	temp_floater.color = color_C.lightened(0.5)
 	return temp_floater
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://beps5jcq75hjn"]
 
-[ext_resource type="Script" uid="uid://bpqbvuyewa0lb" path="res://scenes/shared/question_generator.gd" id="1_ns0ry"]
+[ext_resource type="Script" uid="uid://bpqbvuyewa0lb" path="res://Global/question_generator.gd" id="1_ns0ry"]
 
 [node name="question generator" type="Node"]
 script = ExtResource("1_ns0ry")

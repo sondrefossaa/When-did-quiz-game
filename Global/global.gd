@@ -56,10 +56,11 @@ func load_data():
 		"timeline" : 1
 		}
 	
-func change_scene_with_base(new_scene, orgin_scene):
+func change_scene_with_base(new_scene, orgin_scene, animation_transition_custom_pos = Vector2.ZERO):
 	var base_scene_instance = BASE_SCENE.instantiate()
 	base_scene_instance.child_scene = new_scene
-	base_scene_instance.type = new_scene.instantiate().name
+	base_scene_instance.gameplay_mode = new_scene.instantiate().name
+	base_scene_instance.animation_transition_custom_pos = animation_transition_custom_pos
 	get_tree().root.add_child(base_scene_instance)
 	get_tree().current_scene = base_scene_instance
 	orgin_scene.queue_free()
