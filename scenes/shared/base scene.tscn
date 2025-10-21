@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://duuj82wjn50hv"]
+[gd_scene load_steps=12 format=3 uid="uid://duuj82wjn50hv"]
 
 [ext_resource type="Script" uid="uid://dfvymtq81b45y" path="res://scenes/shared/base_scene.gd" id="1_smjjl"]
 [ext_resource type="Script" uid="uid://7o2tb3rfhup1" path="res://scenes/shared/tutorial.gd" id="2_axqqa"]
+[ext_resource type="Shader" uid="uid://byjajecv1hn28" path="res://visual/shader/blur.gdshader" id="3_1h7qs"]
 
 [sub_resource type="Animation" id="Animation_axqqa"]
 length = 0.001
@@ -265,6 +266,25 @@ _data = {
 &"failed_start": SubResource("Animation_smjjl")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyqbf"]
+shader = ExtResource("3_1h7qs")
+shader_parameter/blur_size = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h7qs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_qyqbf"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_1h7qs")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axqqa"]
 bg_color = Color(0, 0, 0, 0)
 
@@ -386,6 +406,17 @@ grow_vertical = 2
 script = ExtResource("2_axqqa")
 
 [node name="ColorRect" type="ColorRect" parent="tutorial"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75686276)
+
+[node name="ColorRect2" type="ColorRect" parent="tutorial"]
+material = SubResource("ShaderMaterial_qyqbf")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -394,65 +425,85 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="tutorial title" type="Label" parent="tutorial"]
+visible = false
 layout_mode = 0
 offset_left = 42.0
 offset_top = 128.0
 offset_right = 103.0
 offset_bottom = 151.0
 scale = Vector2(16.400244, 16.400244)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Tutorial"
 
-[node name="Continue" type="Button" parent="tutorial"]
+[node name="text panel" type="PanelContainer" parent="tutorial"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -39.5
-offset_top = 346.41003
-offset_right = 39.5
-offset_bottom = 377.41003
+offset_left = -392.5
+offset_top = -312.125
+offset_right = 392.5
+offset_bottom = 312.125
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_qyqbf")
+
+[node name="text margin" type="MarginContainer" parent="tutorial/text panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="tutorial text" type="Label" parent="tutorial/text panel/text margin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "Guess from four options
+when the event happened.
+You get a point for each
+wrong answer. If you get 
+less than 3 wrong, you
+advance to the next card,
+if not you fail.
+You get points equal to
+how many cards 
+you get through."
+horizontal_alignment = 1
+
+[node name="continue button" type="Button" parent="tutorial"]
+top_level = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -500.0
+offset_right = 39.5
+offset_bottom = -469.0
+grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(6.715, 6.715)
 pivot_offset = Vector2(39.5, 15.5)
 text = "Continue"
 
-[node name="tutorial text" type="Label" parent="tutorial"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -559.0
-offset_top = -518.0
-offset_right = 542.0
-offset_bottom = -0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-text = "Place cards in timeline 
-from earliest year(left)
-to latest year(right).
-You get points equal to
- how many cards you
-can get in order.
-Good luck!"
-horizontal_alignment = 1
-
 [node name="main menu button" type="Button" parent="."]
 top_level = true
 layout_mode = 0
-offset_right = 198.0
-offset_bottom = 50.0
+offset_left = 349.0
+offset_top = 2219.0
+offset_right = 547.0
+offset_bottom = 2269.0
 scale = Vector2(1.9523587, 1.9523587)
 theme = SubResource("Theme_quxnp")
 text = "< Main menu"
 
 [connection signal="pressed" from="menu container/try again button" to="." method="_on_try_again_button_pressed"]
-[connection signal="pressed" from="tutorial/Continue" to="tutorial" method="_on_continue_pressed"]
+[connection signal="pressed" from="tutorial/continue button" to="tutorial" method="_on_continue_pressed"]
 [connection signal="pressed" from="main menu button" to="." method="_on_main_menu_button_pressed"]

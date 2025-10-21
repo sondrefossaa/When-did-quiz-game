@@ -1,7 +1,6 @@
 extends Control
 const CASUAL_CARD = preload("res://scenes/casual card/casual.tscn")
 const SINGLE_CATEGORY_CARD = preload("res://scenes/single category card/single category card.tscn")
-const MAIN = preload("uid://cn8psqd4pyn2m")
 const MULTIPLE_CATEGORY_CARD = preload("uid://61iig0uvkhe1")
 const TIMELINE = preload("uid://dfkj408orlm4r")
 const BASE_SCENE = preload("uid://duuj82wjn50hv")

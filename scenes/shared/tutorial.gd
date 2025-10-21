@@ -1,8 +1,11 @@
 extends Control
-@onready var tutorial_text = $"tutorial text"
-@onready var base_scene = $".."
 
-var timeline_tutorial = """Place cards in timeline 
+@onready var base_scene = $".."
+@onready var tutorial_text = %"tutorial text"
+@onready var text_panel = $"text panel"
+@onready var continue_button = $"continue button"
+
+var  timeline_tutorial = """Place cards in timeline 
 from earliest year(left)
 to latest year(right).
 You get points equal to
@@ -10,9 +13,36 @@ You get points equal to
 can get in order.
 Good luck!"""
 
+var single_category_tutorial = """Guess wich year the event 
+happened in. You get points
+equal to the difference
+from the answer. 
+Your score is how many
+cards you can get through
+without surpassing
+1000 points.
+Good luck!"""
+
+var multiple_category_tutorial = """Guess from four options
+when the event happened.
+You get a point for each
+wrong answer. If you get 
+less than 3 wrong, you
+advance to the next card,
+if not you fail.
+You get points equal to
+how many cards 
+you get through."""
+
+var tutorials = {
+	"timeline" : timeline_tutorial,
+	"multiple choice" : multiple_category_tutorial,
+	"single category" : single_category_tutorial,
+}
 func _ready():
-	if base_scene.type not in Global.shown_tutorials:
-		tutorial_text.text = timeline_tutorial
+	if base_scene.type not in Global.shown_tutorials and base_scene.type in tutorials:
+		Global.theme_changed.connect(change_tutorial_color)
+		tutorial_text.text = tutorials[base_scene.type]
 		self.visible = true
 		Global.shown_tutorials.append(base_scene.type)
 		Global.save()
@@ -20,3 +50,7 @@ func _ready():
 		self.visible = false
 func _on_continue_pressed():
 	visible = false
+func change_tutorial_color(_category_name, color):
+	#tutorial_text.add_theme_color_override("font_color", Color(color).darkened(0.5))
+	text_panel.get_theme_stylebox("panel").bg_color = color
+	#continue_button.add_theme_color_override("font_color", Color.WHITE)

@@ -16,7 +16,7 @@ var theme_colors = {
 	"trivia" : "#ff3939",
 	"sport" : "#00bf63",
 }
-var shown_tutorials : Array[String] = ["casual mode"]
+var shown_tutorials : Array[String] = []
 
 var data = {
 	"shown_tutorials" : shown_tutorials,
