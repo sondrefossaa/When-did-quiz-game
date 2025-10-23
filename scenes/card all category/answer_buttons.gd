@@ -61,7 +61,7 @@ func answer_chosen(correct):
 		score_add_anim.play("score added start")
 		await score_add_anim.animation_finished
 		score_add_anim.play("score added")
-		if score_value.text.to_int() > 3:
+		if score_value.text.to_int() > 6:
 			var base_scene = get_tree().get_root().get_child(1)
 			base_scene.play_fail(cards_count.text.to_int())
 		normal_panel_style.border_color = Color.RED

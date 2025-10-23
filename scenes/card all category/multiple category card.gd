@@ -15,7 +15,11 @@ var question_dict ={}
 var current_category = "science"
 
 var current_question : Dictionary
-
+var swapping = false
+var swap_type = ""
+var transition_speed = 10
+var card_size = Vector2(183, 439)
+var orgin_pos_x = card_size.x
 func _ready():
 	question_dict = {
 	"science" : science_question,
@@ -30,6 +34,19 @@ func _ready():
 	question_dict[current_category].text = current_question.question
 	gen_multiple_choice()
 
+func _process(delta):
+	if swapping:
+		match swap_type:
+			"out":
+				global_position.x = lerp(global_position.x, -get_viewport_rect().size.x, transition_speed * delta)
+				if abs(global_position.x+get_viewport_rect().size.x) < 1.0:
+					queue_free()
+			"in":
+				global_position.x = lerp(global_position.x, orgin_pos_x, transition_speed * delta)
+				if abs(global_position.x - orgin_pos_x) < 1.0:
+					global_position.x = orgin_pos_x
+					swapping = false
+					score_value.text = "0"
 
 func gen_multiple_choice():
 	var answer = current_question.answer.to_int()
@@ -46,10 +63,24 @@ func gen_multiple_choice():
 			else:
 				answers[i].text = str(randi_range(answer-100, answer+100))
 		answers[i].add_theme_font_size_override("font_size", 50 - 5 *(len(answers[i].text)-5))
+
 func _on_answer_buttons_new_question():
 	current_category = question_dict.keys()[(question_dict.keys().find(current_category)+1)%question_dict.size()]
 	if current_category == "science":
-		cards_count.text = str(cards_count.text.to_int() + 1)
-		score_value.text = "0"
+		animate_card_swap()
 	current_question = QuestionGenerator.create_question(current_category)
 	gen_multiple_choice()
+
+func animate_card_swap():
+	# TODO fix so that it only animates the visual
+	var new_card = self.duplicate()
+	
+	for question_label in new_card.question_dict.values():
+		question_label.text = ""
+	new_card.global_position.x = get_viewport_rect().size.x
+	new_card.swapping = true
+	new_card.swap_type = "in"
+	self.swapping = true
+	self.swap_type = "out"
+	get_tree().get_root().get_node("base scene").add_child(new_card)
+	new_card.cards_count.text = str(cards_count.text.to_int() + 1)

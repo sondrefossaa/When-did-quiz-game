@@ -30,6 +30,8 @@ func _ready():
 	answer_text.text = ""
 	QuestionGenerator.question_generated.connect(update_category_title)
 	update_category_title(card.category)
+	await Global.base_scene_finished
+	question_timer.start()
 func _process(_delta):
 	if not question_timer.paused:
 		timer_border_indicator.value = (question_timer.time_left / question_timer.wait_time) * 1000
@@ -98,8 +100,7 @@ func animate_card_exit(temp_card):
 	temp_anim.play("card_out")
 	add_child(temp_card)
 	await get_tree().create_timer(0.25).timeout
-	
-	
-	
+
+
 func show_score():
 	answer_text.text = temp_score

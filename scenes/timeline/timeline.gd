@@ -123,8 +123,8 @@ func update_card_pos():
 
 	var i = 0
 	for timeline_card in cards:
-		timeline_card.global_position.x = lerp(timeline_card.global_position.x, pivot.x + (pos_offset_array[i] * timeline_card.size.x * cards_scale) + drag_offset_x, 0.1)
-		timeline_card.global_position.y = lerp(timeline_card.global_position.y, timeline_card_orgin.y, 0.1)
+		timeline_card.global_position.x = lerp(timeline_card.global_position.x, pivot.x + (pos_offset_array[i] * timeline_card.size.x * cards_scale) + drag_offset_x, 10.0 * get_process_delta_time())
+		timeline_card.global_position.y = lerp(timeline_card.global_position.y, timeline_card_orgin.y, 10.0 * get_process_delta_time())
 		i += 1
 
 func find_index(x_pos):

@@ -47,10 +47,15 @@ func _ready():
 		Global.shown_tutorials.append(base_scene.gameplay_mode)
 		Global.save()
 	else:
-		self.visible = false
+		call_deferred("emit_base_scene_signal")
+		visible = false
 func _on_continue_pressed():
+	call_deferred("emit_base_scene_signal")
 	visible = false
-func change_tutorial_color(_category_name, color):
+func change_tutorial_color(_category, color):
 	#tutorial_text.add_theme_color_override("font_color", Color(color).darkened(0.5))
 	text_panel.get_theme_stylebox("panel").bg_color = color
 	#continue_button.add_theme_color_override("font_color", Color.WHITE)
+
+func emit_base_scene_signal():
+	Global.base_scene_finished.emit()

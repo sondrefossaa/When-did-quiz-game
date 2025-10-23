@@ -1,5 +1,7 @@
 extends Node
 
+signal base_scene_finished
+
 const BASE_SCENE = preload("uid://duuj82wjn50hv")
 
 var save_path = "user://high_score.save"
@@ -11,11 +13,12 @@ var high_scores = {
 }
 
 var shown_tutorials : Array[String] = []
-
+var scene_changes = 0
 var data = {
 	"shown_tutorials" : shown_tutorials,
 	"high_scores" : high_scores
 }
+
 func _ready():
 	load_data()
 
@@ -52,4 +55,5 @@ func change_scene_with_base(new_scene, orgin_scene, animation_transition_custom_
 	base_scene_instance.animation_transition_custom_pos = animation_transition_custom_pos
 	get_tree().root.add_child(base_scene_instance)
 	get_tree().current_scene = base_scene_instance
+	scene_changes += 1
 	orgin_scene.queue_free()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cbfdbdwf2jrre" path="res://scenes/casual card/casual_card.gd" id="1_i6ke8"]
 [ext_resource type="PackedScene" uid="uid://fi246xsplije" path="res://scenes/shared/card.tscn" id="1_ppjdh"]
 [ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://Global/question_generator.tscn" id="2_i6ke8"]
-[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_vakau"]
+[ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_k58j8"]
 [ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://Global/theme_manager.tscn" id="3_vakau"]
 
 [node name="casual mode" type="Control"]
@@ -16,8 +16,8 @@ grow_vertical = 2
 script = ExtResource("1_i6ke8")
 metadata/_edit_vertical_guides_ = [1008.0]
 
-[node name="background" parent="." instance=ExtResource("2_vakau")]
-layout_mode = 1
+[node name="backgound viewport" parent="." instance=ExtResource("2_k58j8")]
+layout_mode = 0
 
 [node name="question generator" parent="." instance=ExtResource("2_i6ke8")]
 
@@ -37,7 +37,7 @@ offset_top = 745.0
 offset_right = 76.0
 offset_bottom = 785.0
 
-[node name="Card3" parent="cards container" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_ppjdh")]
+[node name="Card3" parent="cards container" instance=ExtResource("1_ppjdh")]
 layout_mode = 1
 anchor_left = 0.13549957
 anchor_top = 5.9899993
@@ -47,10 +47,8 @@ offset_left = -524.42
 offset_top = -239.59998
 offset_right = 167.18002
 offset_bottom = 770.48
-question_generator = NodePath("../../question generator")
-category_theme_manager = NodePath("../../category theme manager")
 
-[node name="Card" parent="cards container" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_ppjdh")]
+[node name="Card" parent="cards container" instance=ExtResource("1_ppjdh")]
 layout_mode = 1
 anchor_left = 0.1354988
 anchor_top = 5.9899993
@@ -60,10 +58,8 @@ offset_left = 251.57999
 offset_top = -239.59998
 offset_right = 943.18
 offset_bottom = 770.48
-question_generator = NodePath("../../question generator")
-category_theme_manager = NodePath("../../category theme manager")
 
-[node name="Card2" parent="cards container" node_paths=PackedStringArray("question_generator", "category_theme_manager") instance=ExtResource("1_ppjdh")]
+[node name="Card2" parent="cards container" instance=ExtResource("1_ppjdh")]
 layout_mode = 1
 anchor_left = 0.13549805
 anchor_top = 5.9899993
@@ -73,5 +69,3 @@ offset_left = 1032.58
 offset_top = -239.59998
 offset_right = 1724.1799
 offset_bottom = 770.48
-question_generator = NodePath("../../question generator")
-category_theme_manager = NodePath("../../category theme manager")

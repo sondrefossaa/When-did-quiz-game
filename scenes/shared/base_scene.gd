@@ -7,6 +7,7 @@ const MAIN_MENU = "uid://calwfewnvjycf"
 @onready var high_score_display = $"high score container/high score display"
 @onready var high_score_title = $"high score container/high score title"
 @onready var screen_transition_anim = $"screen transition anim"
+@onready var black = $black
 
 # Either timeline, multiple or single category
 var gameplay_mode = ""
@@ -17,17 +18,15 @@ var played_transition = false
 var change_to_main_menu = false
 var main_menu_instance = null
 func _ready():
+	
 	if child_scene:
 		var child_scene_instance = child_scene.instantiate()
 		add_child(child_scene_instance)
-	failed_animation.play("RESET")
 	if animation_transition_custom_pos != Vector2.ZERO:
 		$"screen transition anim/transition_circle".global_position = animation_transition_custom_pos
 		screen_transition_anim.play("scene transition reverse")
 		await screen_transition_anim.animation_finished
-		$"screen transition anim/transition_circle".visible = false
-
-
+	#screen_transition_anim.play("RESET")
 func play_fail(score):
 	var prev_high_score = Global.high_scores[gameplay_mode]
 	var is_high_score = Global.update_high_score(gameplay_mode, score)
@@ -66,5 +65,6 @@ func _process(delta):
 		if abs(main_menu_instance.global_position.x - 0.0) < 1.0:
 			main_menu_instance.global_position.x = 0
 			queue_free()
+
 func _on_try_again_button_pressed():
 	Global.change_scene_with_base(child_scene, self)

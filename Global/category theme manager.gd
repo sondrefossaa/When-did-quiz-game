@@ -14,6 +14,8 @@ var category_colors = {
 
 func _ready():
 	QuestionGenerator.question_generated.connect(change_theme)
+	var start_cat = category_colors.keys().pick_random()
+	theme_changed.emit(start_cat, category_colors[start_cat])
 
 func get_random_theme_color():
 	return category_colors.values().pick_random()
