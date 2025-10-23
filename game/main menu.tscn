@@ -344,8 +344,11 @@ game_mode_buttons = [NodePath("VBoxContainer/competitive button"), NodePath("VBo
 
 [node name="Admob" type="Node" parent="."]
 script = ExtResource("3_54k5l")
+is_real = true
 debug_application_id = "ca-app-pub-3940256099942544~3347511713"
 debug_rewarded_id = "ca-app-pub-3940256099942544/5224354917"
+real_application_id = "ca-app-pub-6391311831202615~7260792978"
+real_rewarded_id = "ca-app-pub-6391311831202615/5237264862"
 metadata/_custom_type_script = "uid://ciim016mkxgj4"
 
 [node name="background" parent="." instance=ExtResource("1_xdlka")]
@@ -353,7 +356,6 @@ layout_mode = 1
 offset_right = 2591.4
 offset_bottom = 3686.4
 floater_type = 0
-random_theme = true
 
 [node name="Title" type="MarginContainer" parent="."]
 layout_mode = 0

@@ -7,8 +7,10 @@ extends Control
 @onready var sport_question = $"Card panel/card body/VBoxContainer2/MarginContainer5/Sport question"
 
 @onready var answers = %"Answer Buttons".get_children()
-@onready var cards_count = $"cards count"
+@onready var cards_count = %"cards count"
 @onready var score_value = %"Score value"
+@onready var card_panel = $"Card panel"
+
 const NORMAL_THEME = preload("uid://cdhu03nh24i37")
 
 var question_dict ={}
@@ -34,19 +36,6 @@ func _ready():
 	question_dict[current_category].text = current_question.question
 	gen_multiple_choice()
 
-func _process(delta):
-	if swapping:
-		match swap_type:
-			"out":
-				global_position.x = lerp(global_position.x, -get_viewport_rect().size.x, transition_speed * delta)
-				if abs(global_position.x+get_viewport_rect().size.x) < 1.0:
-					queue_free()
-			"in":
-				global_position.x = lerp(global_position.x, orgin_pos_x, transition_speed * delta)
-				if abs(global_position.x - orgin_pos_x) < 1.0:
-					global_position.x = orgin_pos_x
-					swapping = false
-					score_value.text = "0"
 
 func gen_multiple_choice():
 	var answer = current_question.answer.to_int()
@@ -72,15 +61,29 @@ func _on_answer_buttons_new_question():
 	gen_multiple_choice()
 
 func animate_card_swap():
-	# TODO fix so that it only animates the visual
-	var new_card = self.duplicate()
+	for category in question_dict:
+		question_dict[category].text = ""
+	score_value.text = "0"
+	cards_count.text = str(cards_count.text.to_int() + 1)
+	var orgin_pos = card_panel.global_position
+	var out_card = card_panel.duplicate()
+	add_child(out_card)
+	var viewport_width = get_viewport_rect().size.x
 	
-	for question_label in new_card.question_dict.values():
-		question_label.text = ""
-	new_card.global_position.x = get_viewport_rect().size.x
-	new_card.swapping = true
-	new_card.swap_type = "in"
-	self.swapping = true
-	self.swap_type = "out"
-	get_tree().get_root().get_node("base scene").add_child(new_card)
-	new_card.cards_count.text = str(cards_count.text.to_int() + 1)
+	card_panel.global_position.x = viewport_width
+	var t = create_tween()
+	var duration = 0.5
+	
+	#t.set_parallel(true)
+	t.set_trans(Tween.TRANS_QUAD)
+	t.set_ease(Tween.EASE_OUT)
+
+	# Slide main menu in (x → 0)
+	t.tween_property(out_card, "global_position:x", 0.0 - card_panel.size.x * 2, duration)
+
+	# Slide this scene out (x → viewport)
+	t.tween_property(card_panel, "global_position:x", orgin_pos.x, duration)
+
+	# When animation is done → delete this scene
+	t.finished.connect(func (): out_card.queue_free())
+	

@@ -13,7 +13,7 @@ var high_scores = {
 }
 
 var shown_tutorials : Array[String] = []
-var scene_changes = 0
+
 var data = {
 	"shown_tutorials" : shown_tutorials,
 	"high_scores" : high_scores
@@ -55,5 +55,5 @@ func change_scene_with_base(new_scene, orgin_scene, animation_transition_custom_
 	base_scene_instance.animation_transition_custom_pos = animation_transition_custom_pos
 	get_tree().root.add_child(base_scene_instance)
 	get_tree().current_scene = base_scene_instance
-	scene_changes += 1
+	
 	orgin_scene.queue_free()

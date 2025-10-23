@@ -237,11 +237,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -68.0
-offset_right = -55.200073
-offset_bottom = 3.7999268
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -75.0
+offset_right = -75.0
 scale = Vector2(1.2, 1.2)
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wvsy")
 metadata/_edit_vertical_guides_ = [730.0, 13.0]
@@ -411,6 +408,16 @@ anchor_right = 1.0
 anchor_bottom = 1.1
 color = Color(0, 0.74902, 0.388235, 1)
 
+[node name="cards count" type="Label" parent="Card panel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "1"
+horizontal_alignment = 1
+
 [node name="Question" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(359.12, 519)
@@ -500,18 +507,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_gx74p")
 }
 speed_scale = 3.0
-
-[node name="cards count" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = -38.0
-offset_top = 16.0
-offset_right = 20.0
-offset_bottom = 155.58333
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
-text = "1"
-horizontal_alignment = 1
 
 [connection signal="timeout" from="new answer timer" to="Buttons bg/Buttons margin/Answer Buttons" method="_on_new_answer_timer_timeout"]
 [connection signal="new_question" from="Buttons bg/Buttons margin/Answer Buttons" to="." method="_on_answer_buttons_new_question"]

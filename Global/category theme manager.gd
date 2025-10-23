@@ -1,8 +1,7 @@
 extends Node
 
 signal theme_changed(category_name, category_color)
-var current_theme := "science"
-var current_color := "38b6ff"
+
 var category_colors = {
 	"science" : "#38b6ff",
 	"history" : "#ffde59",
@@ -10,7 +9,8 @@ var category_colors = {
 	"trivia" : "#ff3939",
 	"sport" : "#00bf63",
 }
-
+var current_theme : String = category_colors.keys().pick_random()
+var current_color : String = category_colors[current_theme]
 
 func _ready():
 	QuestionGenerator.question_generated.connect(change_theme)

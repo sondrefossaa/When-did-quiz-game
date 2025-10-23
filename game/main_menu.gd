@@ -16,6 +16,7 @@ var is_initialized := false
 
 func _ready():
 	admob.initialize()
+
 func transition_scene_with_anim(scene_type):
 	var animation_transition_custom_pos = get_global_mouse_position() - (transition_circle.size * transition_circle.scale) / 2 
 	transition_circle.global_position = animation_transition_custom_pos
@@ -27,7 +28,6 @@ func transition_scene_with_anim(scene_type):
 func _on_competitive_button_pressed():
 	transition_scene_with_anim(SINGLE_CATEGORY_CARD)
 	
-
 func _on_casual_button_pressed():
 	transition_scene_with_anim(CASUAL_CARD)
 
@@ -50,6 +50,6 @@ func _on_admob_initialization_completed(status_data):
 	is_initialized = true
 
 func _on_admob_rewarded_ad_user_earned_reward(ad_id, reward_data):
-	# TODO Update q_count
+	# TODO Maybe update question count (q_count)
 
 	return
