@@ -78,7 +78,9 @@ The project has three global scripts:
  
  The global script handles high score tracking, tracking tutorials shown, saving, and scene transitions. question_generator handles logic for generating a random question in a random category and triggers a theme change to the new question category. category_theme_manager handles the colors related to specific themes and emits a signal when the theme color is changed so that nodes affected by theme color can update it. I could consolidate these nodes to one script called game_maneger but i thought it would be more explicit and cleaner to do it this way.
 
-## How it works
+## Scene explenation
+### Main menu
+![enter image description here](https://lh3.googleusercontent.com/pw/AP1GczNJyqZ9YmpwnyAUdq7HBR6WGVRUpSWrRhVVLw2Xfal71HCHK1c3GE6fllA8BxjKdXoMV0K6RTU2oMWNk37F7TeglIxNSgGrLYeI9uLim70ZjUy8l8NZBXkKbORZWFk7HWM2wgsXhpZVgRHkiRPiP89_Dw=w396-h901-s-no-gm?authuser=0)
 ### Background
 The background scene inherits the current category theme color and has two modes.
 
@@ -88,10 +90,12 @@ The background scene inherits the current category theme color and has two modes
  The year mode generates labes with a year that float over the background in the same random direction. They change direction and color when the category theme changes. The question mode is the same but instead of displaying a year the floating labels display a random question from the question_generator script.
 The floating labels spawn outside the viewport and are removed from processing after they leave it.
 
+### Base scene
+ TODO
 ### Card scene
 All game modes except multiple choice share a common scene called: **card**. The card scene looks like a card, has a white border and the background color follows the currect category theme. The game scene is able to generate qusetions on load or manually by function call. It also has information about what the current answer is and a button that can show it. Making a general card scene like this that can be specified for different game modes makes it easier to add new gamemodes. The reason the multiple choice mode dosent use the card scene is that i wanted to perserve some of the orignal inspiration. It would definetly have been cleaner if i used the card scene for it too.
 
-![Card](https://photos.fife.usercontent.google.com/pw/AP1GczPubnafVmQ2spdsap9xV-TkKcg0oA67nEsCa52B2cBfkJWieiUafRRDgw=w406-h586-s-no-gm?authuser=0)
+![Card](https://lh3.googleusercontent.com/pw/AP1GczNMDR_AZxoLCgfXXMpgGjkQ7vnloUE84sRrHyp5e71AszVSP3FJ0SD1QKtFziwBrP-wSYGDwkQlO2EbXKaL8EJxy5Tb_OyzIgUYX1D5RE2M-Lj5lqt_-GFSsY70P8sL5bltx9kbM6Xoy1DP1QNn-pm8QQ=w406-h586-s-no-gm?authuser=0)
 ### Question generation
 All questions are loaded from a csv file into an array with something called a tool script. A tool script in Godot is a script that can be run in the editor. The reason i dont load questions directly from a csv file is because i had some problems referencing it when exporting. 
 
