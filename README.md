@@ -2,7 +2,7 @@
 # When did? - a quiz game
 ### *My final project for cs50x*
 ##### Made in the Godot game engine
-**When did?** is a quiz game where you have to as yourself a simple question: **When did** x **happen?** The game consists of **four** game modes and **five** categories. 
+**When did?** is a quiz game where you have to ask yourself a simple question: **When did** x **happen?** The game consists of **four** game modes and **five** categories. 
 
 The game modes are:
 - **Numerical** - guess year event happened in with numpad
@@ -16,9 +16,10 @@ The categories are:
 - **Pop culture**
 - **Trivia**
 - **Sports**
+
 All categories are related to a theme color, for example light blue for **Science**. The colors affect the background of the game and also the color of the card displaying the question.
 
-Players can freely choose between game modes from the main menu, and a high score is kept for each of them (except casual). Questions are randomly selected and are all formatted like you can add **"When did"** infront, and of course a **question mark** at the end. Example:
+Players can freely choose between game modes from the main menu, and a high score is kept for each of them (except casual). Questions are randomly selected and are all formatted like you can add **"When did"** in front, and of course a **question mark** at the end. Example:
 Question displayed: Alexander Flemming discover pencillin
 Full formatting: **When did** Alexander Flemmin discover pencilin **?**
 ## Inspiration
@@ -76,9 +77,9 @@ The project has three global scripts:
  2. question_generator
  3. category_theme_manager
  
- The global script handles high score tracking, tracking tutorials shown, saving, and scene transitions. question_generator handles logic for generating a random question in a random category and triggers a theme change to the new question category. category_theme_manager handles the colors related to specific themes and emits a signal when the theme color is changed so that nodes affected by theme color can update it. I could consolidate these nodes to one script called game_maneger but i thought it would be more explicit and cleaner to do it this way.
+ The global script handles high score tracking, tracking tutorials shown, saving, and scene transitions. question_generator handles logic for generating a random question in a random category and triggers a theme change to the new question category. category_theme_manager handles the colors related to specific themes and emits a signal when the theme color is changed so that nodes affected by theme color can update it. I could consolidate these nodes to one script called game_manager but i thought it would be more explicit and cleaner to do it this way.
 
-## Scene explenation
+## Scene explanation
 ### Main menu
 ![enter image description here](https://lh3.googleusercontent.com/pw/AP1GczNJyqZ9YmpwnyAUdq7HBR6WGVRUpSWrRhVVLw2Xfal71HCHK1c3GE6fllA8BxjKdXoMV0K6RTU2oMWNk37F7TeglIxNSgGrLYeI9uLim70ZjUy8l8NZBXkKbORZWFk7HWM2wgsXhpZVgRHkiRPiP89_Dw=w396-h901-s-no-gm?authuser=0)
 ### Background
@@ -91,13 +92,21 @@ The background scene inherits the current category theme color and has two modes
 The floating labels spawn outside the viewport and are removed from processing after they leave it.
 
 ### Base scene
- TODO
+ When transitioning from main menu to a game mode, the **base scene** is loaded with the specific scene as a child. This is done to manage a back button to main menu, scene transition animation, tutorial and fail display with restart button. These are functionality that are common across all scenes so it is integrated in the global function to load a new scene.
+
 ### Card scene
-All game modes except multiple choice share a common scene called: **card**. The card scene looks like a card, has a white border and the background color follows the currect category theme. The game scene is able to generate qusetions on load or manually by function call. It also has information about what the current answer is and a button that can show it. Making a general card scene like this that can be specified for different game modes makes it easier to add new gamemodes. The reason the multiple choice mode dosent use the card scene is that i wanted to perserve some of the orignal inspiration. It would definetly have been cleaner if i used the card scene for it too.
+All game modes except multiple choice share a common scene called: **card**. The card scene looks like a card, has a white border and the background color follows the currect category theme. The game scene is able to generate qusetions on load or manually by function call. It also has information about what the current answer is and a button that can show it. Making a general card scene like this that can be specified for different game modes makes it easier to add new gamemodes. The reason the multiple choice mode doesn’t use the card scene is that i wanted to perserve some of the orignal inspiration. It would definetly have been cleaner if i used the card scene for it too.
 
 ![Card](https://lh3.googleusercontent.com/pw/AP1GczNMDR_AZxoLCgfXXMpgGjkQ7vnloUE84sRrHyp5e71AszVSP3FJ0SD1QKtFziwBrP-wSYGDwkQlO2EbXKaL8EJxy5Tb_OyzIgUYX1D5RE2M-Lj5lqt_-GFSsY70P8sL5bltx9kbM6Xoy1DP1QNn-pm8QQ=w406-h586-s-no-gm?authuser=0)
 ### Question generation
-All questions are loaded from a csv file into an array with something called a tool script. A tool script in Godot is a script that can be run in the editor. The reason i dont load questions directly from a csv file is because i had some problems referencing it when exporting. 
+All questions are loaded from a csv file into an array with something called a tool script. A tool script in Godot is a script that can be run in the editor. The reason i dont load questions directly from a csv file is because i had some problems referencing it when exporting. The questions mainly come from deepseek and some from myself.
 
 
+## Future improvements and regrets
+The easiest improvement i would do is to refractor the base scene to be loaded all the time so the logic with scene transitions and scene reloading becomees easier. That would mean i only need one animation for the scene transition instead of starting it in the main scene and fiinishing it on base scene load. 
 
+I would consider adding a global leaderboard.
+
+I would make better questions. Most of the questions are generated by DeepSeek and are not that good. All sports questions are on average 2000 so if you just answer that on every sports question you get max 20 points.
+
+The tutorials are ulgy.

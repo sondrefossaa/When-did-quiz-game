@@ -441,7 +441,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_54k5l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_54k5l")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_54k5l")
 theme_override_styles/focus = SubResource("StyleBoxFlat_54k5l")
-text = "Competitive mode"
+text = "Numerical"
 
 [node name="multiple choice" type="Button" parent="VBoxContainer"]
 layout_mode = 2
