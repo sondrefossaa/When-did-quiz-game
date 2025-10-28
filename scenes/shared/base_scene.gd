@@ -70,11 +70,8 @@ func play_menu_animation():
 	t.set_trans(Tween.TRANS_QUAD)
 	t.set_ease(Tween.EASE_OUT)
 
-	# Slide main menu in (x → 0)
 	t.tween_property(main_menu_instance, "global_position:x", 0.0, duration)
 
-	# Slide this scene out (x → viewport)
 	t.tween_property(self, "global_position:x", viewport_width, duration)
 
-	# When animation is done → delete this scene
 	t.finished.connect(queue_free)

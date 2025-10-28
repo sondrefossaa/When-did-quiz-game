@@ -74,16 +74,12 @@ func animate_card_swap():
 	var t = create_tween()
 	var duration = 0.5
 	
-	#t.set_parallel(true)
 	t.set_trans(Tween.TRANS_QUAD)
 	t.set_ease(Tween.EASE_OUT)
 
-	# Slide main menu in (x → 0)
 	t.tween_property(out_card, "global_position:x", 0.0 - card_panel.size.x * 2, duration)
 
-	# Slide this scene out (x → viewport)
 	t.tween_property(card_panel, "global_position:x", orgin_pos.x, duration)
 
-	# When animation is done → delete this scene
 	t.finished.connect(func (): out_card.queue_free())
 	
