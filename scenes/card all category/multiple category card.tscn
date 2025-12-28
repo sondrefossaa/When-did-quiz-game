@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://61iig0uvkhe1"]
+[gd_scene load_steps=28 format=3 uid="uid://61iig0uvkhe1"]
 
 [ext_resource type="Script" uid="uid://cf6ahk3rd42su" path="res://scenes/card all category/multiple category card.gd" id="1_46u86"]
 [ext_resource type="PackedScene" uid="uid://cbdm37u6b6a4k" path="res://visual/background/background.tscn" id="2_im5jp"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" uid="uid://by0n24lqoatqf" path="res://scenes/card all category/answer_buttons.gd" id="4_tlj86"]
 [ext_resource type="Theme" uid="uid://cdhu03nh24i37" path="res://visual/themes/multiple category card/normal theme.tres" id="5_mj7rh"]
 [ext_resource type="Script" uid="uid://cyewhsek74mjb" path="res://scenes/card all category/button.gd" id="6_bvk0x"]
-[ext_resource type="PackedScene" uid="uid://beps5jcq75hjn" path="res://Global/question_generator.tscn" id="7_lfjv7"]
-[ext_resource type="PackedScene" uid="uid://bgyld47fl1rqh" path="res://Global/theme_manager.tscn" id="8_im5jp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wvsy"]
 bg_color = Color(1, 1, 1, 1)
@@ -475,10 +473,6 @@ size_flags_horizontal = 3
 theme = ExtResource("5_mj7rh")
 text = "1997"
 script = ExtResource("6_bvk0x")
-
-[node name="question generator" parent="." instance=ExtResource("7_lfjv7")]
-
-[node name="category theme manager" parent="." instance=ExtResource("8_im5jp")]
 
 [node name="Score value" type="Label" parent="."]
 unique_name_in_owner = true

@@ -43,4 +43,4 @@ func update_bg_color(newcolor):
 	card_bg.add_theme_stylebox_override("panel", new_stylebox)
 func reveal_answer():
 	if show_answer_btn:
-		show_answer_btn.text = current_question.answer
+		show_answer_btn.text = current_question.answer.text

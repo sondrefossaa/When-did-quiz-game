@@ -27,7 +27,7 @@ var multiple_category_tutorial = """Guess from four options
 when the event happened.
 You get a point for each
 wrong answer. If you get 
-less than 4 wrong, you
+less than 3 wrong, you
 advance to the next card,
 if not you fail.
 You get points equal to

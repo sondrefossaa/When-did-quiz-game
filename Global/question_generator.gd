@@ -8,7 +8,7 @@ const questions = preload("res://questions/question_loader.tres") as CSVResource
 @onready var data = questions.questions
 
 var categories : Array[String] = ["science", "history", "pop", "trivia", "sport"]
-var correct_answer : String
+var correct_answer : Dictionary
 # Limit question count to prevent csv "wrapping"
 var question_count := 131
 
@@ -21,8 +21,8 @@ func create_question(category = "random", will_change_theme = true):
 	var col = index * 2
 	var row = randi_range(1, question_count-1)
 	var question = data[row][col]
-
-	correct_answer = data[row][col+1]
+	var answer_text = data[row][col+1]
+	correct_answer = {"text": answer_text, "value": int(answer_text) if "BC" not in answer_text else -int(answer_text)}
 	
 	if will_change_theme:
 		question_generated.emit(category)

@@ -38,16 +38,17 @@ func _ready():
 
 
 func gen_multiple_choice():
-	var answer = current_question.answer.to_int()
+	var answer = current_question.answer.value
 	question_dict[current_category].text = current_question.question
 	var correct_button = randi() % 4
 	# Need to add something to generate bc too
 	for i in range(4):
 		if i == correct_button:
 			answers[i].correct = true
-			answers[i].text = current_question.answer
+			answers[i].text = current_question.answer.text
 		else:
-			if "BC" in current_question.answer:
+			if "BC" in current_question.answer.text:
+				answer *= -1
 				answers[i].text = str(randi_range(answer-100, answer+100)) + " BC"
 			else:
 				answers[i].text = str(randi_range(answer-100, answer+100))

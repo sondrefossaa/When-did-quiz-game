@@ -556,7 +556,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 1143.0
 offset_right = -359.0
-offset_bottom = -515.0
+offset_bottom = -432.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bqwab")
@@ -666,6 +666,13 @@ theme = ExtResource("8_15qw2")
 text = "confirm"
 icon_alignment = 1
 
+[node name="BC toggle" type="Button" parent="num input/Number input"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_15qw2")
+theme_override_font_sizes/font_size = 52
+text = "BC"
+
 [node name="Input field" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
@@ -718,3 +725,4 @@ action_mode = 0
 text = "  BC  "
 
 [connection signal="timeout" from="timer border indicator/question timer" to="." method="_on_question_timer_timeout"]
+[connection signal="pressed" from="num input/Number input/BC toggle" to="." method="_on_bc_toggle_pressed"]

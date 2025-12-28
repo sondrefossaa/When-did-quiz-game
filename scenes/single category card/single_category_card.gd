@@ -18,11 +18,14 @@ extends Control
 @onready var score_add_anim = $"Score value/score add anim"
 @onready var input_container = $"Card/input container"
 @onready var CARD_BG_DEFAULT = preload("uid://mgu6f7bglqa0")
+@onready var BC_toggle_btn = %"BC toggle"
+@onready var CALCULATOR_BUTTON_THEME = preload("uid://c8g43ggknf01x")
 var current_question : Dictionary
 
 var max_allowed_score = 1000
 var no_ans_score = 500
 var temp_score = ""
+var BC = false
 
 # TODO update funcion with new card refactoring in mind
 func _ready():
@@ -45,7 +48,8 @@ func _on_question_timer_timeout():
 
 func calculate_score():
 	question_timer.stop()
-	var new_score = abs(player_answer_input.text.to_int() - card.current_question.answer.to_int())
+	var BC_mult = 1 if not BC else -1
+	var new_score = abs(player_answer_input.text.to_int() * BC_mult - card.current_question.answer.value)
 	# If no answer given
 	if player_answer_input.text == "":
 		player_answer_input.text = "?"
@@ -55,7 +59,7 @@ func calculate_score():
 		new_score = -100
 	# Generate new current_question after score is calculated
 	temp_score = str(new_score)
-	answer_text.text = card.current_question.answer
+	answer_text.text = card.current_question.answer.text
 	score_anim.play("show score")
 	await  score_anim.animation_finished
 	#score_anim.play("RESET")
@@ -88,6 +92,7 @@ func calculate_score():
 	
 	
 func animate_card_exit(temp_card):
+	set_BC_btn_color(Color.BLACK)
 	temp_card.generate_question = false
 	var temp_anim : AnimationPlayer = temp_card.get_node("score anim")
 	var new_stylebox = CARD_BG_DEFAULT.duplicate()
@@ -104,3 +109,18 @@ func animate_card_exit(temp_card):
 
 func show_score():
 	answer_text.text = temp_score
+
+
+func _on_bc_toggle_pressed() -> void:
+	BC = !BC
+	var color = Color.GREEN if BC else Color.BLACK
+	set_BC_btn_color(color)
+	BC_toggle_btn.queue_redraw()
+func set_BC_btn_color(new_color : Color):
+	BC_toggle_btn.add_theme_color_override("font_color", new_color)
+	BC_toggle_btn.add_theme_color_override("font_hover_color", new_color)
+	BC_toggle_btn.add_theme_color_override("font_pressed_color", new_color)
+	BC_toggle_btn.add_theme_color_override("font_focus_color", new_color)
+	BC_toggle_btn.add_theme_color_override("font_disabled_color", new_color)
+	BC_toggle_btn.add_theme_color_override("font_outline_color", new_color)
+	BC_toggle_btn.add_theme_color_override("font_shadow_color", new_color)

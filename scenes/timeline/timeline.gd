@@ -86,16 +86,16 @@ func _process(_delta):
 
 func is_valid_insertion(new_card: Node, index: int) -> bool:
 	var child_count = timeline_cards.get_child_count()
-	var new_value: int = new_card.current_question.answer.to_int()
+	var new_value: int = new_card.current_question.answer.value
 	if index - 1 >= 0 and index + 1 < child_count:
-		var prev: int = timeline_cards.get_child(index - 1).current_question.answer.to_int()
-		var next: int = timeline_cards.get_child(index + 1).current_question.answer.to_int()
-		return new_value > prev and new_value < next
+		var prev: int = timeline_cards.get_child(index - 1).current_question.answer.value
+		var next: int = timeline_cards.get_child(index + 1).current_question.answer.value
+		return new_value >= prev and new_value <= next
 	elif index - 1 >= 0:  # Only prev (inserting at end)
-		var prev: int = timeline_cards.get_child(index - 1).current_question.answer.to_int()
+		var prev: int = timeline_cards.get_child(index - 1).current_question.answer.value
 		return new_value >= prev
 	elif index + 1 < child_count:  # Only next (inserting at start)
-		var next: int = timeline_cards.get_child(index + 1).current_question.answer.to_int()
+		var next: int = timeline_cards.get_child(index + 1).current_question.answer.value
 		return new_value <= next
 	else:
 		return true

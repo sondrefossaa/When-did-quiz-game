@@ -32,6 +32,8 @@ func _ready():
 
 func update_color():
 	normal_panel_style.border_color = Color.BLACK
+	#apply_category_styling_to_buttons(CategoryThemeManager.category_colors[card.current_category])
+	
 	for button in buttons:
 		var new_color = Color(CategoryThemeManager.category_colors[card.current_category])
 		button.add_theme_color_override("font_hover_color", new_color)
@@ -39,8 +41,6 @@ func update_color():
 		button.add_theme_color_override("font_hover_pressed_color", new_color)
 		button.add_theme_color_override("font_focus_color", new_color)
 
-
-		
 func answer_chosen(correct):
 	var disabled_correct_stylebox := StyleBoxFlat.new()
 	disabled_correct_stylebox.bg_color = Color.GREEN
@@ -61,8 +61,8 @@ func answer_chosen(correct):
 		score_add_anim.play("score added start")
 		await score_add_anim.animation_finished
 		score_add_anim.play("score added")
-		if score_value.text.to_int() > 3:
-			var base_scene = get_tree().get_root().get_child(1)
+		if score_value.text.to_int() > 2:
+			var base_scene = get_tree().get_root().get_node("base scene")
 			base_scene.play_fail(cards_count.text.to_int())
 		normal_panel_style.border_color = Color.RED
 		right = false
@@ -78,3 +78,42 @@ func _on_new_answer_timer_timeout():
 	for button in buttons:
 		button.theme = normal_theme
 		#button.add_theme_stylebox_override("disabled", button_style)
+func apply_category_styling_to_buttons(buttons: Array[Button], category_color: Color) -> void:
+	for button in buttons:
+		# Apply border color to all button states
+		var states = ["normal", "hover", "pressed", "focus", "disabled"]
+		
+		for state in states:
+			var current_style = button.get_theme_stylebox(state)
+			
+			if current_style:
+				# Duplicate existing style to preserve other stylings
+				var new_style = current_style.duplicate()
+				
+				# Only modify if it's a StyleBoxFlat (has border properties)
+				if new_style is StyleBoxFlat:
+					# Set border color and width
+					new_style.border_color = category_color
+					new_style.border_width_left = 2
+					new_style.border_width_top = 2
+					new_style.border_width_right = 2
+					new_style.border_width_bottom = 2
+					
+					# Apply the modified style
+					button.add_theme_stylebox_override(state, new_style)
+			else:
+				# Create new stylebox if none exists (preserves other button stylings)
+				var new_style = StyleBoxFlat.new()
+				new_style.bg_color = Color.TRANSPARENT
+				new_style.border_color = category_color
+				new_style.border_width_all = 2
+				button.add_theme_stylebox_override(state, new_style)
+		
+		# Apply font colors (your original code)
+		button.add_theme_color_override("font_color", category_color)
+		button.add_theme_color_override("font_hover_color", category_color)
+		button.add_theme_color_override("font_pressed_color", category_color)
+		button.add_theme_color_override("font_focus_color", category_color)
+		
+		# Force visual update
+		button.queue_redraw()
